@@ -1,0 +1,1089 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapitre 1 : Introduction à l’IA &#8212; Fondements de l&#39;Intelligence Artificielle</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=e6b791cb"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch0-intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Chapitre 2 : Concepts Clés de l’IA" href="ch1-concpets.html" />
+    <link rel="prev" title="Fondements de l’IA" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Fondements de l'Intelligence Artificielle - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Fondements de l'Intelligence Artificielle - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Fondements de l’IA
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapitre 1 : Introduction à l’IA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch1-concpets.html">Chapitre 2 : Concepts Clés de l’IA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Dépôt source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch0-intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Ouvrez un problème"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ch0-intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapitre 1 : Introduction à l’IA</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">1.1 Définitions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ia-faible-ou-etroite">IA Faible (ou Étroite)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ia-forte-ou-agi">IA Forte (ou AGI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparaison-ia-faible-vs-ia-forte">Comparaison IA Faible vs IA Forte</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histoire-de-l-intelligence-artificielle">1.2 Histoire de l’Intelligence Artificielle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#les-precurseurs-1940-1950">Les Précurseurs (1940-1950)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naissance-de-l-ia-1950-1960">Naissance de l’IA (1950-1960)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renouveau-et-avancees-1980-2010">Renouveau et Avancées (1980-2010)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples-pionniers-de-l-ia">1.3 Exemples Pionniers de l’IA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-recentes-de-l-ia">1.4 Applications Récentes de l’IA</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapitre-1-introduction-a-l-ia">
+<h1>Chapitre 1 : Introduction à l’IA<a class="headerlink" href="#chapitre-1-introduction-a-l-ia" title="Lien vers cette rubrique">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Aperçu</p>
+<p>Ce chapitre introduit les concepts clés de l’intelligence artificielle (IA), son histoire, et ses premières applications.
+Il établit les bases nécessaires pour comprendre les développements modernes dans le domaine de l’IA.</p>
+</div>
+<section id="definitions">
+<h2>1.1 Définitions<a class="headerlink" href="#definitions" title="Lien vers cette rubrique">#</a></h2>
+<p>L’IA est une discipline interdisciplinaire combinant l’informatique, les mathématiques, la linguistique, la psychologie et l’ingénierie.
+Elle vise à créer des systèmes capables de réaliser des tâches nécessitant normalement l’intelligence humaine.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Définition de John McCarthy</p>
+<p>L’un des fondateurs de l’IA, John McCarthy, la définit comme « la science et l’ingénierie de la fabrication de machines intelligentes ».
+Cette définition montre la diversité d’approches que le domaine peut englober.</p>
+<hr class="docutils" />
+<p><strong>==&gt;</strong> L’Intelligence Artificielle est donc un domaine multidisciplinaire de l’informatique visant à créer des systèmes capables d’effectuer des tâches qui nécessitent normalement l’intelligence humaine. Ces tâches incluent l’apprentissage, le raisonnement, la résolution de problèmes, la perception et la compréhension du langage naturel.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Composantes clés de la définition</p>
+<ul class="simple">
+<li><p><strong>Intelligence</strong>: Dans le contexte de l’IA, l’intelligence implique :</p>
+<ul>
+<li><p>La capacité d’acquérir et d’appliquer des connaissances</p></li>
+<li><p>L’aptitude à s’adapter à de nouvelles situations</p></li>
+<li><p>La faculté de comprendre des concepts abstraits</p></li>
+<li><p>La résolution de problèmes complexes</p></li>
+</ul>
+</li>
+<li><p><strong>Artificiel</strong>: Le terme « artificiel » indique que cette intelligence est :</p>
+<ul>
+<li><p>Créée par l’homme, non biologique</p></li>
+<li><p>Implémentée dans des systèmes informatiques</p></li>
+<li><p>Potentiellement différente dans sa nature et son fonctionnement de l’intelligence humaine</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition-comportement-intelligent admonition">
+<p class="admonition-title">Comportement intelligent</p>
+<p>L’IA vise à reproduire ou simuler des comportements considérés comme intelligents, tels que :</p>
+<ul class="simple">
+<li><p>L’apprentissage à partir d’expériences</p></li>
+<li><p>Le raisonnement logique</p></li>
+<li><p>La planification et la prise de décision</p></li>
+<li><p>La compréhension et la génération du langage</p></li>
+<li><p>La perception visuelle et auditive</p></li>
+</ul>
+</div>
+<div class="admonition-approches-principales admonition">
+<p class="admonition-title">Approches principales</p>
+<ol class="arabic simple">
+<li><p>IA symbolique (ou GOFAI - Good Old-Fashioned AI):</p>
+<ul class="simple">
+<li><p>Basée sur la manipulation de symboles et la logique formelle</p></li>
+<li><p>Utilise des règles prédéfinies et des systèmes de raisonnement</p></li>
+</ul>
+</li>
+<li><p>IA connexionniste:</p>
+<ul class="simple">
+<li><p>Fondée sur des réseaux de neurones artificiels</p></li>
+<li><p>Apprend à partir de grandes quantités de données</p></li>
+</ul>
+</li>
+<li><p>IA hybride:</p>
+<ul class="simple">
+<li><p>Combine les approches symboliques et connexionnistes</p></li>
+<li><p>Vise à tirer parti des avantages de chaque approche</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<section id="ia-faible-ou-etroite">
+<h3>IA Faible (ou Étroite)<a class="headerlink" href="#ia-faible-ou-etroite" title="Lien vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>L’IA Faible, également appelée IA Étroite ou IA Spécialisée (ANI - Artificial Narrow Intelligence), désigne des systèmes d’IA conçus et entraînés pour une tâche ou un domaine spécifique. Ces systèmes excellent dans leur domaine défini mais sont limités à celui-ci et ne peuvent pas s’adapter à des tâches différentes.</p>
+</div>
+<div class="admonition-caracteristiques-cles admonition">
+<p class="admonition-title">Caractéristiques clés</p>
+<ol class="arabic simple">
+<li><p><strong>Spécialisation</strong> : Performante dans un domaine précis, mais incapable de transférer ses compétences à un autre domaine.</p></li>
+<li><p><strong>Absence de conscience</strong> : Ne possède pas de conscience de soi ou de compréhension générale.</p></li>
+<li><p><strong>Limites définies</strong> : Fonctionne uniquement dans les paramètres fixés par sa programmation.</p></li>
+<li><p><strong>Basée sur des données</strong> : Dépend fortement des données utilisées pour l’entraînement et les prédictions.</p></li>
+<li><p><strong>Apprentissage continu limité</strong> : Certaines IA faibles utilisent l’apprentissage en ligne, mais toujours dans un cadre limité.</p></li>
+</ol>
+</div>
+<div class="admonition-exemples-concrets admonition">
+<p class="admonition-title">Exemples concrets</p>
+<ol class="arabic simple">
+<li><p><strong>Assistants vocaux</strong> : Siri (Apple), Alexa (Amazon), Google Assistant, tous capables de répondre à des questions spécifiques mais sans véritable compréhension du contexte global.</p></li>
+<li><p><strong>Moteurs de recommandation</strong> : Netflix, Spotify, Amazon, utilisant des algorithmes pour suggérer des contenus ou des produits basés sur les préférences des utilisateurs.</p></li>
+<li><p><strong>Systèmes de reconnaissance d’images</strong> : Face ID d’Apple, ou la technologie de reconnaissance faciale utilisée par Facebook et dans les applications de sécurité.</p></li>
+<li><p><strong>Jeux</strong> : DeepBlue (victoire contre Kasparov en échecs) et AlphaGo (victoire contre Lee Sedol au jeu de Go), des IA spécialisées conçues uniquement pour ces jeux.</p></li>
+<li><p><strong>Diagnostic médical</strong> : IBM Watson Oncologie, qui analyse des données médicales pour recommander des traitements.</p></li>
+</ol>
+</div>
+<div class="admonition-technologies-sous-jacentes admonition">
+<p class="admonition-title">Technologies sous-jacentes</p>
+<ol class="arabic simple">
+<li><p><strong>Apprentissage automatique</strong> : Algorithmes apprenant à partir de données pour faire des prédictions ou prendre des décisions.</p></li>
+<li><p><strong>Traitement du langage naturel (NLP)</strong> : Compréhension et génération de langage humain, utilisée dans les chatbots et assistants vocaux.</p></li>
+<li><p><strong>Vision par ordinateur</strong> : Analyse d’images et reconnaissance de formes, couramment utilisée dans les systèmes de sécurité.</p></li>
+<li><p><strong>Systèmes experts</strong> : Utilisation de bases de connaissances pour imiter le raisonnement humain dans un domaine spécifique.</p></li>
+</ol>
+</div>
+<div class="admonition-limites admonition">
+<p class="admonition-title">Limites</p>
+<ol class="arabic simple">
+<li><p><strong>Manque de flexibilité</strong> : Ne peut pas apprendre ni effectuer des tâches en dehors de son domaine d’entraînement.</p></li>
+<li><p><strong>Dépendance aux données</strong> : La qualité de ses prédictions dépend entièrement des données disponibles.</p></li>
+<li><p><strong>Absence de compréhension contextuelle</strong> : Incapable de saisir la signification au-delà des données qu’elle traite.</p></li>
+<li><p><strong>Surveillance nécessaire</strong> : Nécessite une maintenance et des mises à jour régulières pour rester pertinente.</p></li>
+</ol>
+</div>
+</section>
+<section id="ia-forte-ou-agi">
+<h3>IA Forte (ou AGI)<a class="headerlink" href="#ia-forte-ou-agi" title="Lien vers cette rubrique">#</a></h3>
+<div class="admonition-definition admonition">
+<p class="admonition-title">Définition</p>
+<p>L’IA Forte, ou Intelligence Artificielle Générale (AGI - Artificial General Intelligence), est une hypothèse théorique d’une IA capable de comprendre, apprendre et s’adapter à toute tâche intellectuelle humaine. Contrairement à l’IA faible, l’IA forte aurait une intelligence polyvalente comparable à celle de l’humain.</p>
+</div>
+<div class="admonition-caracteristiques-theoriques admonition">
+<p class="admonition-title">Caractéristiques théoriques</p>
+<ol class="arabic simple">
+<li><p><strong>Polyvalence</strong> : Capable d’accomplir toute tâche cognitive qu’un humain pourrait réaliser.</p></li>
+<li><p><strong>Conscience de soi</strong> : Hypothèse qu’elle pourrait développer une forme de conscience ou d’auto-réflexion.</p></li>
+<li><p><strong>Apprentissage autonome</strong> : Peut apprendre de manière indépendante sans entraînement spécifique préalable.</p></li>
+<li><p><strong>Raisonnement abstrait</strong> : Capacité à raisonner et à conceptualiser des idées complexes.</p></li>
+<li><p><strong>Adaptation</strong> : S’adapte à des situations nouvelles et imprévues sans nécessiter de reprogrammation.</p></li>
+</ol>
+</div>
+<div class="admonition-approches-theoriques-vers-l-agi-intelligence-artificielle-generale admonition">
+<p class="admonition-title">Approches théoriques vers l’AGI (Intelligence Artificielle Générale)</p>
+<ol class="arabic simple">
+<li><p><strong>Approche symbolique</strong> : Manipulation de symboles et utilisation de la logique pour simuler la pensée humaine.</p></li>
+<li><p><strong>Connexionnisme</strong> : Utilisation de réseaux neuronaux artificiels, inspirés du cerveau humain.</p></li>
+<li><p><strong>Approche hybride</strong> : Combinaison d’approches symboliques et connexionnistes.</p></li>
+<li><p><strong>Émulation du cerveau</strong> : Tentatives de reproduction du fonctionnement du cerveau humain à l’aide de modèles informatiques.</p></li>
+</ol>
+</div>
+<div class="admonition-defis-majeurs admonition">
+<p class="admonition-title">Défis majeurs</p>
+<ol class="arabic simple">
+<li><p><strong>Compréhension du langage</strong> : Développer une maîtrise complète des nuances et du contexte linguistique.</p></li>
+<li><p><strong>Raisonnement de sens commun</strong> : Capacité à comprendre le monde comme un humain, avec toutes ses ambiguïtés.</p></li>
+<li><p><strong>Apprentissage cumulatif</strong> : Capacité à accumuler et à utiliser des connaissances au fil du temps.</p></li>
+<li><p><strong>Créativité et innovation</strong> : Générer des idées originales et résoudre des problèmes inédits.</p></li>
+<li><p><strong>Conscience et émotions</strong> : Comprendre et potentiellement reproduire des émotions humaines.</p></li>
+</ol>
+</div>
+<div class="admonition-implications-ethiques-et-societales admonition">
+<p class="admonition-title">Implications éthiques et sociétales</p>
+<ol class="arabic simple">
+<li><p><strong>Impact sur l’emploi</strong> : Potentiel remplacement de certains emplois humains, nécessitant une requalification de la main-d’œuvre.</p></li>
+<li><p><strong>Questions de sécurité</strong> : Risques liés à la création d’une IA incontrôlable.</p></li>
+<li><p><strong>Droits des entités IA</strong> : Débats sur la possibilité de reconnaître des droits à des IA conscientes.</p></li>
+<li><p><strong>Transformation sociétale</strong> : Changement profond de la structure de la société et de l’économie mondiale.</p></li>
+</ol>
+</div>
+</section>
+<section id="comparaison-ia-faible-vs-ia-forte">
+<h3>Comparaison IA Faible vs IA Forte<a class="headerlink" href="#comparaison-ia-faible-vs-ia-forte" title="Lien vers cette rubrique">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Aspect</strong></p></th>
+<th class="head"><p><strong>IA Faible</strong></p></th>
+<th class="head"><p><strong>IA Forte</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Existence</strong></p></td>
+<td><p>Réelle et utilisée largement</p></td>
+<td><p>Hypothétique</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Portée</strong></p></td>
+<td><p>Limitée à des tâches spécifiques</p></td>
+<td><p>Universelle</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Conscience</strong></p></td>
+<td><p>Absente</p></td>
+<td><p>Potentiellement présente</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Apprentissage</strong></p></td>
+<td><p>Spécifique au domaine</p></td>
+<td><p>Autonome et généralisé</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Flexibilité</strong></p></td>
+<td><p>Faible</p></td>
+<td><p>Très élevée</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Implications éthiques</strong></p></td>
+<td><p>Modérées</p></td>
+<td><p>Profondes et complexes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Réflexion critique</p>
+<p>L’IA forte n’existe pas encore. La recherche actuelle se concentre principalement sur l’IA faible, qui est déjà omniprésente dans les technologies que nous utilisons chaque jour.</p>
+</div>
+</section>
+</section>
+<section id="histoire-de-l-intelligence-artificielle">
+<h2>1.2 Histoire de l’Intelligence Artificielle<a class="headerlink" href="#histoire-de-l-intelligence-artificielle" title="Lien vers cette rubrique">#</a></h2>
+<section id="les-precurseurs-1940-1950">
+<h3>Les Précurseurs (1940-1950)<a class="headerlink" href="#les-precurseurs-1940-1950" title="Lien vers cette rubrique">#</a></h3>
+<ul class="simple">
+<li><p><strong>1943</strong> : McCulloch et Pitts conçoivent un modèle de neurone artificiel.</p></li>
+<li><p><strong>1950</strong> : Alan Turing propose le « Test de Turing ».</p></li>
+</ul>
+</section>
+<section id="naissance-de-l-ia-1950-1960">
+<h3>Naissance de l’IA (1950-1960)<a class="headerlink" href="#naissance-de-l-ia-1950-1960" title="Lien vers cette rubrique">#</a></h3>
+<ul class="simple">
+<li><p><strong>1956</strong> : Conférence de Dartmouth, naissance officielle de l’IA.</p></li>
+<li><p><strong>1957</strong> : Développement du Perceptron par Rosenblatt.</p></li>
+</ul>
+<div class="caution admonition">
+<p class="admonition-title">Période de Déclin</p>
+<p>Dans les années 1970, le premier « hiver de l’IA » survient à cause des attentes irréalistes et du manque de progrès.</p>
+</div>
+</section>
+<section id="renouveau-et-avancees-1980-2010">
+<h3>Renouveau et Avancées (1980-2010)<a class="headerlink" href="#renouveau-et-avancees-1980-2010" title="Lien vers cette rubrique">#</a></h3>
+<ul class="simple">
+<li><p><strong>Systèmes Experts</strong> : Utilisés dans le diagnostic médical et l’industrie.</p></li>
+<li><p><strong>Apprentissage Automatique</strong> : Émergence de nouveaux algorithmes comme les SVM et les réseaux de neurones.</p></li>
+</ul>
+</section>
+</section>
+<section id="exemples-pionniers-de-l-ia">
+<h2>1.3 Exemples Pionniers de l’IA<a class="headerlink" href="#exemples-pionniers-de-l-ia" title="Lien vers cette rubrique">#</a></h2>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/deepblue.png"><img alt="deepblue" class="bg-primary mb-1 align-center" src="_images/deepblue.png" style="width: 400px;" /></a>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Jeux et Résolution de Problèmes</p>
+<ul class="simple">
+<li><p><strong>Deep Blue</strong> : Un jalon dans l’histoire de l’IA et des jeux:</p></li>
+</ul>
+<p>Deep Blue est reconnu comme le premier ordinateur à battre un champion du monde d’échecs en match officiel, marquant une avancée majeure pour l’intelligence artificielle.</p>
+<ul class="simple">
+<li><p><strong>Contexte historique</strong> :
+Les échecs ont longtemps été perçus comme une épreuve ultime pour l’IA en raison de la complexité stratégique
+du jeu. Dès les années 1950, Claude Shannon et Alan Turing ont exploré l’idée de programmes capables de jouer aux échecs.</p></li>
+<li><p><strong>Évolution des programmes d’échecs</strong> :</p>
+<ul>
+<li><p><strong>1951</strong> : Alan Turing développe le premier programme d’échecs sur papier.</p></li>
+<li><p><strong>1957</strong> : Alex Bernstein crée le premier programme fonctionnel sur IBM 704.</p></li>
+<li><p><strong>1967</strong> : Mac Hack VI devient le premier programme à battre un humain en tournoi.</p></li>
+<li><p><strong>1988</strong> : Deep Thought, précurseur de Deep Blue, bat un grand maître international.</p></li>
+</ul>
+</li>
+<li><p><strong>Origine du projet</strong>:
+Le projet Deep Blue, dirigé par <strong>Feng-hsiung Hsu</strong> et <strong>Murray Campbell</strong>, a débuté en 1985 sous le nom <strong>ChipTest</strong> à l’Université Carnegie Mellon, puis est devenu Deep Thought avant de se transformer en Deep Blue chez IBM.</p></li>
+<li><p><strong>Le match historique contre Garry Kasparov</strong> :</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>Premier match (1996)</strong>:</p>
+<ul class="simple">
+<li><p><strong>Résultat</strong> : Kasparov gagne 4-2.</p></li>
+<li><p><strong>Impact</strong> : C’était la première fois qu’un ordinateur gagnait une partie contre un champion du monde en conditions de tournoi.</p></li>
+</ul>
+</li>
+<li><p><strong>Match revanche (1997)</strong> :</p>
+<ul class="simple">
+<li><p><strong>Dates</strong> : 3-11 mai 1997.</p></li>
+<li><p><strong>Lieu</strong> : New York.</p></li>
+<li><p><strong>Résultat</strong> : Deep Blue gagne 3½-2½.</p></li>
+<li><p><strong>Déroulement</strong> :</p>
+<ul>
+<li><p><strong>Partie 1</strong> : Victoire de Kasparov.</p></li>
+<li><p><strong>Partie 2</strong> : Victoire de Deep Blue, un moment clé dans le match.</p></li>
+<li><p><strong>Parties 3 à 5</strong> : Nulles.</p></li>
+<li><p><strong>Partie 6</strong> : Deep Blue remporte la victoire décisive.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div class="warning admonition">
+<p class="admonition-title">Controverse après la victoire</p>
+<p>Après sa défaite, <strong>Kasparov</strong> a accusé IBM de tricherie en suggérant une intervention humaine lors du match. IBM a refusé de fournir les journaux détaillés des calculs, ce qui a alimenté les débats sur les limites de l’IA.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Impact sur l’IA et la perception publique</strong> :
+La victoire de Deep Blue a eu un impact majeur sur le domaine de l’IA :</p>
+<ul>
+<li><p>Elle a prouvé que les ordinateurs pouvaient surpasser les humains dans des tâches complexes.</p></li>
+<li><p>Le match a suscité des débats sur la nature de l’intelligence et les limites des machines.</p></li>
+<li><p>Il a marqué un tournant dans la manière dont l’IA est perçue par le grand public et les chercheurs.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/eliza_shrdlu.png"><img alt="ELIZA and SHRDLU" class="bg-primary mb-1 align-center" src="_images/eliza_shrdlu.png" style="width: 400px;" /></a>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Pionniers du Traitement du Langage Naturel</p>
+<ul class="simple">
+<li><p><strong>ELIZA et SHRDLU : Les premiers agents conversationnels et systèmes de compréhension</strong></p></li>
+</ul>
+<p>Ces deux programmes ont marqué des étapes importantes dans le domaine du traitement du langage naturel (NLP).</p>
+<h3 class="rubric" id="eliza-le-premier-agent-conversationnel">ELIZA : Le premier agent conversationnel</h3>
+<ol class="arabic simple">
+<li><p><strong>Contexte et création</strong><br />
+ELIZA a été développée entre <strong>1964 et 1966</strong> par <strong>Joseph Weizenbaum</strong> au MIT. Elle est considérée comme le premier programme d’agent conversationnel (chatbot) de l’histoire. Weizenbaum souhaitait démontrer que les interactions humaines avec une machine pouvaient être simulées, même avec un algorithme simple.</p></li>
+<li><p><strong>Fonctionnement et caractéristiques</strong></p>
+<ul class="simple">
+<li><p><strong>Principe de base</strong> : ELIZA utilise la reconnaissance de motifs et la substitution de mots-clés pour générer des réponses.</p></li>
+<li><p><strong>Persona</strong> : Le programme imite un <strong>psychothérapeute rogérien</strong>, encourageant l’utilisateur à s’exprimer librement.</p></li>
+<li><p><strong>Technique principale</strong> : Utilisation de scripts prédéfinis pour analyser les entrées de l’utilisateur.</p></li>
+</ul>
+</li>
+<li><p><strong>Exemples d’interaction</strong></p>
+<ul class="simple">
+<li><p>Human: Je suis triste.</p></li>
+<li><p>ELIZA: Je suis désolé d’entendre que vous êtes triste. Pouvez-vous m’en dire plus sur ce qui vous rend triste ?</p></li>
+</ul>
+</li>
+</ol>
+<div class="warning admonition">
+<p class="admonition-title">Limites d’ELIZA</p>
+<p>ELIZA montrait rapidement ses limites dès que les interactions devenaient plus complexes, illustrant les défis du traitement du langage naturel.</p>
+</div>
+<h3 class="rubric" id="shrdlu-un-systeme-avance-de-comprehension-du-langage">SHRDLU : Un Système Avancé de Compréhension du Langage</h3>
+<ol class="arabic simple">
+<li><p><strong>Contexte et création</strong><br />
+SHRDLU a été développé entre <strong>1968 et 1970</strong> par <strong>Terry Winograd</strong> au MIT. Il visait à démontrer qu’un ordinateur pouvait comprendre et exécuter des instructions en langage naturel dans un environnement contrôlé.</p></li>
+<li><p><strong>Fonctionnement et caractéristiques</strong></p>
+<ul class="simple">
+<li><p><strong>Mondes de blocs</strong> : SHRDLU opérait dans un environnement virtuel composé de blocs colorés.</p></li>
+<li><p><strong>Compréhension</strong> : Le système pouvait comprendre des phrases complexes comme :</p>
+<ul>
+<li><p>« Place le cube rouge sur le cube bleu. »</p></li>
+<li><p>« Quels blocs sont empilés ? »</p></li>
+</ul>
+</li>
+<li><p><strong>Dialogue</strong> : SHRDLU pouvait répondre et interagir pour clarifier des instructions ambiguës.</p></li>
+</ul>
+</li>
+</ol>
+<div class="tip admonition">
+<p class="admonition-title">Importance de SHRDLU</p>
+<p>SHRDLU a démontré que des systèmes informatiques pouvaient simuler une compréhension linguistique, mais uniquement dans des environnements limités.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Impact d’ELIZA et SHRDLU sur le NLP</strong> :
+Ces deux systèmes ont posé les bases des développements modernes en traitement du langage naturel :</p>
+<ul>
+<li><p><strong>ELIZA</strong> a popularisé l’idée des chatbots.</p></li>
+<li><p><strong>SHRDLU</strong> a inspiré les recherches en dialogue homme-machine.</p></li>
+<li><p>Ils ont mis en lumière les défis inhérents au NLP, en particulier la nécessité de traiter l’ambiguïté du langage humain.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/shakey_robot.png"><img alt="Shakey robot" class="bg-primary mb-1 align-center" src="_images/shakey_robot.png" style="width: 400px;" /></a>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Robotique et Perception : Shakey et la Vision par Ordinateur</p>
+<ul class="simple">
+<li><p><strong>Shakey</strong> : Le premier robot mobile intelligent, et les débuts de la vision par ordinateur, deux jalons majeurs dans l’évolution de l’IA.</p></li>
+</ul>
+<h3 class="rubric" id="shakey-le-premier-robot-mobile-intelligent">Shakey : Le premier robot mobile intelligent</h3>
+<ol class="arabic simple">
+<li><p><strong>Contexte et développement</strong><br />
+Shakey a été développé entre <strong>1966 et 1972</strong> au <strong>Stanford Research Institute</strong> (SRI International) sous la direction de <strong>Charles Rosen</strong>.
+Il est reconnu comme le premier robot mobile capable de raisonner sur ses propres actions, posant les bases de la robotique autonome moderne.</p></li>
+<li><p><strong>Caractéristiques techniques</strong></p>
+<ul class="simple">
+<li><p><strong>Dimensions</strong> : Environ 2 mètres de haut</p></li>
+<li><p><strong>Équipement</strong> :</p>
+<ul>
+<li><p>Caméra TV</p></li>
+<li><p>Capteurs de distance</p></li>
+<li><p>Capteurs de contact</p></li>
+</ul>
+</li>
+<li><p><strong>Ordinateur</strong> : Connecté à un ordinateur <strong>SDS-940</strong> via une liaison radio</p></li>
+<li><p><strong>Logiciel</strong> : Utilisait le langage de programmation <strong>STRIPS</strong> (Stanford Research Institute Problem Solver)</p></li>
+</ul>
+</li>
+<li><p><strong>Capacités et innovations</strong></p>
+<ul class="simple">
+<li><p><strong>Navigation autonome</strong> : Shakey pouvait planifier des itinéraires et naviguer dans des environnements complexes.</p></li>
+<li><p><strong>Perception visuelle</strong> : Il reconnaissait des objets simples et interprétait son environnement.</p></li>
+<li><p><strong>Planification d’actions</strong> : STRIPS lui permettait de décomposer des tâches en séquences d’actions simples.</p></li>
+<li><p><strong>Résolution de problèmes</strong> : Capable de résoudre des problèmes comme déplacer des objets d’une pièce à une autre.</p></li>
+</ul>
+</li>
+<li><p><strong>Démonstrations célèbres</strong></p>
+<ul class="simple">
+<li><p>Allumer et éteindre des interrupteurs</p></li>
+<li><p>Pousser des objets (comme des boîtes) d’une pièce à une autre</p></li>
+<li><p>Naviguer autour d’obstacles imprévus</p></li>
+</ul>
+</li>
+</ol>
+<div class="tip admonition">
+<p class="admonition-title">Impact et héritage de Shakey</p>
+<p>Shakey a jeté les bases de nombreux domaines de la robotique et de l’IA :</p>
+<ul class="simple">
+<li><p>La planification automatique</p></li>
+<li><p>La cartographie et la localisation simultanées (SLAM)</p></li>
+<li><p>L’intégration de multiples sous-systèmes d’IA</p></li>
+</ul>
+</div>
+<h3 class="rubric" id="vision-par-ordinateur-les-debuts-de-la-reconnaissance-d-objets">Vision par Ordinateur : Les Débuts de la Reconnaissance d’Objets</h3>
+<ol class="arabic simple">
+<li><p><strong>Contexte historique</strong><br />
+Les années <strong>1960 et 1970</strong> ont vu les premiers efforts sérieux pour doter les ordinateurs de la capacité de « voir », ouvrant ainsi le champ de la vision par ordinateur.</p></li>
+<li><p><strong>Premières approches et techniques</strong></p>
+<ul class="simple">
+<li><p><strong>Analyse de bords et de contours</strong> :</p>
+<ul>
+<li><p><strong>Détecteur de Sobel</strong> (1968) : Irwin Sobel et Gary Feldman ont développé cet algorithme pour détecter les bords dans les images.</p></li>
+<li><p><strong>Opérateur de Prewitt</strong> (1970) : Judith Prewitt a proposé une méthode similaire pour la détection de contours.</p></li>
+</ul>
+</li>
+<li><p><strong>Segmentation d’images</strong> :</p>
+<ul>
+<li><p><strong>Seuillage</strong> : Technique séparant les objets du fond en fonction de l’intensité des pixels.</p></li>
+<li><p><strong>Croissance de régions</strong> : Regroupement des pixels similaires en régions cohérentes.</p></li>
+</ul>
+</li>
+<li><p><strong>Reconnaissance de formes</strong> :</p>
+<ul>
+<li><p><strong>Template Matching</strong> : Comparaison d’images avec des modèles prédéfinis.</p></li>
+<li><p><strong>Descripteurs de formes</strong> : Méthodes mathématiques comme les <strong>moments de Hu</strong> (1962) pour caractériser les formes.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Projets et systèmes pionniers</strong></p>
+<ul class="simple">
+<li><p><strong>Le Monde des Blocs</strong> (1963-1972) : Développé par Larry Roberts au MIT pour reconnaître et modéliser des objets simples.</p></li>
+<li><p><strong>ACRONYM</strong> (1970s) : Projet de Rodney Brooks à Stanford, capable de reconnaître des objets 3D complexes.</p></li>
+<li><p><strong>VISION</strong> (1973-1982) : Dirigé par Takeo Kanade à CMU pour créer un système de vision complet pour la robotique.</p></li>
+</ul>
+</li>
+<li><p><strong>Défis et limitations des premières approches</strong></p>
+<ul class="simple">
+<li><p>Sensibilité aux variations d’éclairage et de perspective</p></li>
+<li><p>Difficulté à gérer les occlusions et les objets partiellement visibles</p></li>
+<li><p>Manque de robustesse face à la variabilité des objets</p></li>
+<li><p>Besoin de grandes puissances de calcul, limitées à l’époque</p></li>
+</ul>
+</li>
+</ol>
+<div class="tip admonition">
+<p class="admonition-title">Impact sur la vision par ordinateur moderne</p>
+<p>Les travaux pionniers dans la vision par ordinateur ont posé les bases des technologies modernes :</p>
+<ul class="simple">
+<li><p><strong>Réseaux de neurones convolutifs</strong> (CNN) dans les années 1980-1990</p></li>
+<li><p><strong>Reconnaissance faciale</strong> et <strong>conduite autonome</strong> aujourd’hui</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="applications-recentes-de-l-ia">
+<h2>1.4 Applications Récentes de l’IA<a class="headerlink" href="#applications-recentes-de-l-ia" title="Lien vers cette rubrique">#</a></h2>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/llm.png"><img alt="llm" class="bg-primary mb-1 align-center" src="_images/llm.png" style="width: 400px;" /></a>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Grands Modèles de Langage (LLM)</p>
+<ul class="simple">
+<li><p><strong>Aperçu technologique</strong> :<br />
+Les <strong>LLM</strong> (Large Language Models) reposent sur des architectures de <strong>transformers</strong>, capables de traiter des milliards, voire des trillions de paramètres. Ils s’entraînent de manière non supervisée sur des corpus textuels massifs.</p></li>
+<li><p><strong>Applications principales</strong> :</p>
+<ol class="arabic simple">
+<li><p><strong>Génération de texte et dialogue</strong> : Exemples comme <strong>ChatGPT</strong> permettant des conversations fluides avec les utilisateurs.</p></li>
+<li><p><strong>Assistance à la programmation</strong> : Outils comme <strong>GitHub Copilot</strong> pour l’aide au développement de code.</p></li>
+<li><p><strong>Traduction automatique et analyse de sentiment</strong> : Transformation du traitement de texte en applications pratiques.</p></li>
+</ol>
+</li>
+<li><p><strong>Impact socio-économique</strong> :</p>
+<ul>
+<li><p>Révolution dans l’écriture, le service client et la programmation.</p></li>
+<li><p><strong>Défis éthiques</strong> : Propriété intellectuelle, gestion des biais et désinformation.</p></li>
+<li><p><strong>Impact éducatif</strong> : Redéfinition des compétences professionnelles et des méthodes d’enseignement.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/drone.jpeg"><img alt="drone" class="bg-primary mb-1 align-center" src="_images/drone.jpeg" style="width: 400px;" /></a>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Systèmes de Défense et Drones Autonomes</p>
+<ul class="simple">
+<li><p><strong>Technologies clés</strong> :</p>
+<ul>
+<li><p><strong>Vision par ordinateur</strong> pour la reconnaissance de cibles.</p></li>
+<li><p><strong>Algorithmes autonomes</strong> : Prise de décision sans intervention humaine.</p></li>
+<li><p><strong>Coordination d’essaims de drones</strong> : Travail en coopération via IA.</p></li>
+</ul>
+</li>
+<li><p><strong>Exemples d’application</strong> :</p>
+<ol class="arabic simple">
+<li><p><strong>Drone Kargu-2</strong> : Drone autonome avec capacités de suivi et d’engagement.</p></li>
+<li><p><strong>Iron Dome</strong> : Système d’interception de missiles piloté par IA.</p></li>
+<li><p><strong>Projet MAVEN</strong> : Utilisation de l’IA pour l’analyse d’images capturées par drones.</p></li>
+</ol>
+</li>
+<li><p><strong>Implications stratégiques et éthiques</strong> :</p>
+<ul>
+<li><p>Transformation des doctrines militaires.</p></li>
+<li><p><strong>Débats éthiques</strong> : Responsabilité des décisions prises par les systèmes autonomes.</p></li>
+<li><p><strong>Nécessité de régulation</strong> : Développement de cadres juridiques internationaux.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<a class="bg-primary mb-1 reference internal image-reference" href="_images/smart-city.jpg"><img alt="smartcity" class="bg-primary mb-1 align-center" src="_images/smart-city.jpg" style="width: 400px;" /></a>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">Internet des Objets (IoT) et Villes Intelligentes</p>
+<ul class="simple">
+<li><p><strong>Infrastructure technologique</strong> :</p>
+<ul>
+<li><p><strong>Capteurs interconnectés</strong> pour la collecte de données en temps réel.</p></li>
+<li><p><strong>Analyse dynamique</strong> via des plateformes intégrées pour la gestion urbaine.</p></li>
+</ul>
+</li>
+<li><p><strong>Étude de cas : Gestion du Trafic à Singapour</strong> :</p>
+<ol class="arabic simple">
+<li><p><strong>Composants du système</strong> :</p>
+<ul>
+<li><p>Réseau de <strong>1000 capteurs</strong> sur les axes principaux.</p></li>
+<li><p><strong>Caméras intelligentes</strong> avec traitement en temps réel.</p></li>
+<li><p>Feux de circulation <strong>adaptatifs</strong> basés sur les flux de trafic.</p></li>
+</ul>
+</li>
+<li><p><strong>Fonctionnement</strong> :</p>
+<ul>
+<li><p>Collecte et analyse prédictive par IA.</p></li>
+<li><p>Ajustement dynamique des feux.</p></li>
+<li><p>Diffusion d’informations aux usagers.</p></li>
+</ul>
+</li>
+<li><p><strong>Résultats</strong> :</p>
+<ul>
+<li><p>Réduction de <strong>20% des temps de trajet</strong>.</p></li>
+<li><p>Baisse de <strong>15% des émissions de CO2</strong>.</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong>Défis et perspectives</strong> :</p>
+<ul>
+<li><p>Optimisation des <strong>ressources urbaines</strong>.</p></li>
+<li><p><strong>Cybersécurité</strong> et protection des données personnelles.</p></li>
+<li><p>Amélioration de la qualité de vie urbaine.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Fondements de l’IA</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ch1-concpets.html"
+       title="page suivante">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">suivant</p>
+        <p class="prev-next-title">Chapitre 2 : Concepts Clés de l’IA</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">1.1 Définitions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ia-faible-ou-etroite">IA Faible (ou Étroite)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ia-forte-ou-agi">IA Forte (ou AGI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparaison-ia-faible-vs-ia-forte">Comparaison IA Faible vs IA Forte</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histoire-de-l-intelligence-artificielle">1.2 Histoire de l’Intelligence Artificielle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#les-precurseurs-1940-1950">Les Précurseurs (1940-1950)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naissance-de-l-ia-1950-1960">Naissance de l’IA (1950-1960)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renouveau-et-avancees-1980-2010">Renouveau et Avancées (1980-2010)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples-pionniers-de-l-ia">1.3 Exemples Pionniers de l’IA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-recentes-de-l-ia">1.4 Applications Récentes de l’IA</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Professeur Iaousse Mbarek, École des Hautes Études Commerciales, Rabat, Maroc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
