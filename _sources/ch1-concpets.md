@@ -1,6 +1,6 @@
 # Chapitre 2 : Concepts Clés de l'IA
 
-## 2. Apprentissage Automatique (Machine Learning)
+## Apprentissage Automatique (Machine Learning)
 L’apprentissage automatique permet aux systèmes d’évoluer à partir de données.
 
 
@@ -168,5 +168,93 @@ Les réseaux neuronaux reproduisent le fonctionnement du cerveau.
 
 :::
 
+
+-----
+
+
+
+
+## Projet d'Analyse : L'Intelligence Artificielle dans la Transformation Digitale d'une Entreprise Marocaine
+
+### Mise en Situation
+
+Vous êtes consultants pour "Marjane Holding", une entreprise marocaine de grande distribution souhaitant moderniser son approche commerciale en intégrant l'intelligence artificielle (IA). Face à une concurrence accrue dans le secteur de la grande distribution et à l'évolution des attentes des consommateurs, l'entreprise cherche des moyens de mieux comprendre ses clients, d'optimiser la gestion de ses stocks et de personnaliser l’expérience d’achat.
+
+### Objectifs du Projet
+1. **Assimilation des concepts clés de l'IA** : Les étudiants devront rechercher et définir les concepts d'intelligence artificielle, de machine learning, et de big data pour bien cerner leurs applications pratiques.
+2. **Découverte de l'apprentissage supervisé** : Les étudiants exploreront des cas concrets d'apprentissage supervisé (classification et régression) et réfléchiront à leur utilisation dans des scénarios réels adaptés au contexte de Marjane Holding.
+3. **Analyse des besoins en données** : Les étudiants examineront les sources de données, les types de données nécessaires, et la forme des données utilisées dans l'apprentissage supervisé.
+4. **Développement de recommandations théoriques** : Les étudiants formuleront un plan d'action pour la modernisation de l’entreprise en utilisant l’IA.
+
+### Partie 1 : Compréhension des Concepts Clés 
+
+#### Concepts à Rechercher et Définir
+
+Les étudiants devront faire des recherches pour définir et expliquer les concepts suivants :
+1. **Intelligence Artificielle (IA)** 
+2. **Machine Learning (ML)**
+3. **Apprentissage Supervisé** 
+4. **Classification et Régression** 
+5. **Big Data** 
+#### Questions Guidées
+1. Quelles sont les principales différences entre l'IA et le machine learning ?
+2. Pourquoi utilise-t-on des données étiquetées dans l'apprentissage supervisé ?
+3. Quels sont les différents types de données (structurées et non structurées) et comment peuvent-ils être utilisés en apprentissage supervisé ?
+4. Pourquoi le Big Data est-il important pour le développement de l'IA, en particulier dans un secteur comme la grande distribution ?
+
+### Partie 2 : Analyse des Besoins en Données et Apprentissage Supervisé
+
+#### Cas Pratiques à Analyser
+
+Pour chaque défi rencontré par Marjane Holding, analysez les éléments suivants :
+1. **Sources de Données** : Identifiez les sources de données potentielles.
+2. **Types de Données** : Précisez si les données sont structurées ou non structurées et expliquez comment elles pourraient être utilisées en apprentissage supervisé.
+3. **Format des Données** : Discutez de la forme des données (texte, images, chiffres) et de l'importance de la qualité des données pour obtenir de bons résultats.
+4. **Application du Modèle** : Choisissez le type d’apprentissage supervisé adapté pour chaque défi.
+
+##### Situation 1 : Prédiction des Ventes Futures
+- *Données disponibles* : Historique des ventes, calendrier des fêtes marocaines, promotions, saisonnalité.
+- *Questions* :
+  - Quelles sources de données Marjane pourrait-elle utiliser pour améliorer la précision des prédictions de ventes ?
+  - Quels types de données supplémentaires pourraient être utiles pour affiner les prévisions ?
+  - Comment la forme des données (tableaux de ventes, graphiques de tendances) influence-t-elle le choix du modèle d’apprentissage supervisé ?
+
+##### Situation 2 : Personnalisation du Service Client
+- *Données disponibles* : Historique des interactions clients, réclamations, avis clients, FAQ existante.
+- *Questions* :
+  - Quelle est la nature des données client (structurées ou non structurées) et comment cela influence-t-il le type d'algorithme de classification à utiliser ?
+  - Quelles données complémentaires Marjane pourrait-elle collecter pour mieux personnaliser le service client ?
+  - Quels défis l’entreprise pourrait-elle rencontrer lors de l’utilisation de données textuelles (ex. : compréhension des avis clients) dans un modèle d’apprentissage supervisé ?
+
+##### Situation 3 : Optimisation de la Gestion des Stocks
+- *Données disponibles* : Historique des ventes, prévisions météo, stocks actuels, informations sur les fournisseurs.
+- *Questions* :
+  - Comment les données structurées (quantités de stock, historiques de ventes) et non structurées (informations sur les fournisseurs) peuvent-elles être combinées pour une meilleure gestion des stocks ?
+  - Quel type d’apprentissage supervisé serait adapté pour prévoir la demande des produits en fonction de la saisonnalité ?
+  - Comment Marjane pourrait-elle maintenir la qualité et la fiabilité des données pour garantir l’efficacité du modèle ?
+
+### Partie 3 : Recommandations Théoriques 
+
+#### Plan d'Action à Développer
+
+Formulez un plan d’action en réponse aux questions suivantes :
+1. **Identification des Besoins en Données** :
+   - Quelles données Marjane doit-elle collecter ou mettre en place pour assurer le succès des projets IA (précisez les sources, types et formats de données nécessaires) ?
+   - Comment Marjane pourrait-elle vérifier et maintenir la qualité des données dans le temps ?
+
+2. **Priorité des Solutions** :
+   - Classez les solutions par ordre de priorité en fonction de leur impact sur le business, leur facilité de mise en œuvre, leur coût estimé et les risques potentiels.
+   
+3. **Feuille de Route** :
+   - Court terme (3-6 mois) : Quels petits projets IA Marjane pourrait-elle lancer pour explorer l'apprentissage supervisé ?
+   - Moyen terme (6-12 mois) : Quelle application IA pourrait-elle introduire pour transformer le service client ?
+   - Long terme (12+ mois) : Comment Marjane pourrait-elle devenir une entreprise orientée "data" en intégrant des solutions IA avancées ?
+
+#### Questions Finales
+1. Quelles sont les trois principales recommandations que vous feriez à Marjane pour moderniser son approche avec l'IA et le machine learning ?
+2. Quels indicateurs de performance (KPIs) recommanderiez-vous pour évaluer le succès de chaque solution IA ?
+3. Comment Marjane pourrait-elle promouvoir l’adoption de l’IA parmi les employés, et quels défis pourraient apparaître ?
+
+---
 
 

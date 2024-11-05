@@ -1,0 +1,899 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Premiers pas en Python pour la science des données &#8212; Fondements de l&#39;Intelligence Artificielle</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=041d0952"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Pratique1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Fondements de l'Intelligence Artificielle - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Fondements de l'Intelligence Artificielle - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Fondements de l’IA
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ch0-intro.html">Chapitre 1 : Introduction à l’IA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch1-concpets.html">Chapitre 2 : Concepts Clés de l’IA</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Dépôt source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPratique1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Ouvrez un problème"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Pratique1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Premiers pas en Python pour la science des données</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pratique-1-types-de-donnees-mathematiques-et-fonction-print">Pratique 1 : Types de données, mathématiques et fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilisation-de-la-fonction-print">Utilisation de la fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commentaires">Commentaires</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-de-donnees-de-base">Types de données de base</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-particulier-guillemets-a-l-interieur-des-chaines-de-caracteres">Cas particulier : guillemets à l’intérieur des chaînes de caractères</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operateurs-mathematiques">Opérateurs mathématiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-pratique">Exemple pratique</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essayez-vous-meme">Essayez-vous-même !</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#executez-le-code-dans-la-cellule-ci-dessous-pour-voir-les-erreurs-corrigez-les-erreurs-dans-le-code">1. Exécutez le code dans la cellule ci-dessous pour voir les erreurs. Corrigez les erreurs dans le code.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#executez-le-code-ci-dessous-pour-voir-l-erreur-corrigez-l-erreur-dans-le-code">2. Exécutez le code ci-dessous pour voir l’erreur. Corrigez l’erreur dans le code.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pour-les-questions-restantes-utilisez-les-donnees-ci-dessous">Pour les questions restantes, utilisez les données ci-dessous :</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creez-une-variable-pour-calculer-le-benefice-moyen-par-voiture-a-laide-des-donnees-de-ventes-de-renault-maroc-affichez-le-resultat">3. Créez une variable pour calculer le bénéfice moyen par voiture à l’aide des données de ventes de <code class="docutils literal notranslate"><span class="pre">Renault</span> <span class="pre">Maroc</span></code>. Affichez le résultat.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trouvez-et-affichez-le-benefice-total-de-ce-mois-ci-en-vous-basant-sur-les-donnees-de-renault-maroc">4. Trouvez et affichez le bénéfice total de ce mois-ci en vous basant sur les données de <code class="docutils literal notranslate"><span class="pre">Renault</span> <span class="pre">Maroc</span></code>.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#en-supposant-que-les-ventes-et-les-marges-beneficiaires-de-ce-mois-soient-identiques-combien-de-mois-de-ventes-sont-necessaires-pour-atteindre-un-benefice-de-1-000-000-dh-ou-plus">5. En supposant que les ventes et les marges bénéficiaires de ce mois soient identiques, combien de mois de ventes sont nécessaires pour atteindre un bénéfice de 1 000 000 DH ou plus ?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="premiers-pas-en-python-pour-la-science-des-donnees">
+<h1>Premiers pas en Python pour la science des données<a class="headerlink" href="#premiers-pas-en-python-pour-la-science-des-donnees" title="Lien vers cette rubrique">#</a></h1>
+<p>Dans cette section, nous allons introduire les bases de Python. L’objectif ici est de vous familiariser avec les éléments essentiels du langage nécessaires à la pratique de la science des données. Python est un outil incontournable dans ce domaine, permettant de manipuler, analyser et visualiser des données avec efficacité. En acquérant ces compétences fondamentales à travers des exemples concrets et réalistes, vous serez mieux préparés à appliquer des techniques de science des données sur des jeux de données réels et à résoudre des problèmes complexes de manière pratique.</p>
+<section id="pratique-1-types-de-donnees-mathematiques-et-fonction-print">
+<h2>Pratique 1 : Types de données, mathématiques et fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code><a class="headerlink" href="#pratique-1-types-de-donnees-mathematiques-et-fonction-print" title="Lien vers cette rubrique">#</a></h2>
+<p>Dans cette section, vous débuterez en apprenant les bases de la manipulation de différents types de données, ainsi que l’utilisation de la fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code> pour afficher ce qui se passe dans votre programme Python.</p>
+<p>Si vous souhaitez approfondir vos connaissances en programmation Python, vous pouvez consulter cette <a class="reference external" href="https://www.tutorialspoint.com/python/python_basic_operators.htm">documentation sur les opérateurs mathématiques</a> pour aller plus loin.</p>
+<section id="utilisation-de-la-fonction-print">
+<h3>Utilisation de la fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code><a class="headerlink" href="#utilisation-de-la-fonction-print" title="Lien vers cette rubrique">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">print()</span></code> est une fonction intégrée qui vous permet, en tant qu’utilisateur, de visualiser ce qui se passe dans le code. Elle ne modifie ni ne transmet quoi que ce soit au programme Python.</p>
+<p>Par exemple, nous avons affiché le message « Hello World! » ci-dessous.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="commentaires">
+<h3>Commentaires<a class="headerlink" href="#commentaires" title="Lien vers cette rubrique">#</a></h3>
+<p>Il arrive que nous souhaitions expliquer ou organiser notre code sans donner d’instructions au programme. C’est là qu’interviennent les commentaires ! Le symbole <code class="docutils literal notranslate"><span class="pre">#</span></code> indique à Python que vous écrivez un commentaire destiné à être lu par un humain. Tout ce qui est écrit après le symbole <code class="docutils literal notranslate"><span class="pre">#</span></code> sur la même ligne sera ignoré par Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print &#39;Hello World!&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span> <span class="c1"># Un autre commentaire</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="types-de-donnees-de-base">
+<h3>Types de données de base<a class="headerlink" href="#types-de-donnees-de-base" title="Lien vers cette rubrique">#</a></h3>
+<p>En Python, il existe plusieurs types de données que nous pouvons utiliser pour stocker des informations. Les quatre types les plus courants sont : les entiers, les nombres à virgule flottante, les chaînes de caractères et les booléens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>              <span class="c1"># valeur entière  </span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>            <span class="c1"># valeur flottante  </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>  <span class="c1"># chaîne de caractères  </span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>           <span class="c1"># valeur booléenne  </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+3.5
+Hello World
+True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Lien vers cette rubrique">#</a></h3>
+<p>Les variables nous permettent de stocker des données pour les manipuler ou les afficher dans différentes parties de notre programme Python. Elles réduisent la répétition de code et rendent le programme plus lisible.</p>
+<p>Par exemple, imaginons que nous écrivons un programme pour générer un reçu pour un acheteur en ligne. Nous voudrions peut-être afficher le coût de la commande à plusieurs endroits. Pour cela, nous pourrions stocker cette valeur dans une variable nommée <code class="docutils literal notranslate"><span class="pre">cost</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cost</span> <span class="o">=</span> <span class="mi">200</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Le coût de votre commande est de&#39;</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="s1">&#39;DH&#39;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Veuillez appuyer sur le bouton vert pour accepter le paiement de&#39;</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="s1">&#39;DH&#39;</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Le coût de votre commande est de 200 DH
+Veuillez appuyer sur le bouton vert pour accepter le paiement de 200 DH
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cas-particulier-guillemets-a-l-interieur-des-chaines-de-caracteres">
+<h3>Cas particulier : guillemets à l’intérieur des chaînes de caractères<a class="headerlink" href="#cas-particulier-guillemets-a-l-interieur-des-chaines-de-caracteres" title="Lien vers cette rubrique">#</a></h3>
+<p>Un cas particulier à considérer est la création d’une chaîne de caractères contenant des guillemets en son sein.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cas particulier ! Guillemets dans des guillemets</span>
+
+<span class="c1"># Utilisez des guillemets simples pour encapsuler la chaîne si vous avez besoin d&#39;inclure des guillemets doubles à l&#39;intérieur</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Les &quot;data&quot; sont des informations numériques brutes exploitables pour faire des analyses&#39;</span><span class="p">)</span>
+
+<span class="c1"># Utilisez des guillemets doubles pour encapsuler la chaîne si vous avez besoin d&#39;inclure des guillemets simples à l&#39;intérieur</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;J&#39;utilise la data science pour résoudre des problèmes concrets en analysant les données.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Vous pouvez également utiliser le caractère d&#39;échappement (\) pour dire à Python d&#39;ignorer le caractère qui suit</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;J</span><span class="se">\&#39;</span><span class="s1">utilise la data science pour résoudre des problèmes concrets en analysant les données.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Les &quot;data&quot; sont des informations numériques brutes exploitables pour faire des analyses
+J&#39;utilise la data science pour résoudre des problèmes concrets en analysant les données.
+J&#39;utilise la data science pour résoudre des problèmes concrets en analysant les données.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="operateurs-mathematiques">
+<h3>Opérateurs mathématiques<a class="headerlink" href="#operateurs-mathematiques" title="Lien vers cette rubrique">#</a></h3>
+<p>Python propose plusieurs opérateurs mathématiques intégrés. Ces opérateurs peuvent être utilisés pour effectuer des transformations sur les données.</p>
+<p>Il est important de noter que les opérateurs se comportent différemment selon les types de données.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Créer des variables pour des opérations mathématiques dans les cellules suivantes</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>  
+<span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>  
+<span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;Hello &#39;</span>  
+<span class="n">d</span> <span class="o">=</span> <span class="s1">&#39;world&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remarquez que lorsque vous exécutez la cellule ci-dessus, rien ne s’affiche en sortie. Python stocke les variables en mémoire, mais ne fait rien d’autre avec elles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Addition (+)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Addition des chaines de caracteres</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Soustraction (-)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiplication (*)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exponent (**)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="o">**</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Division (/)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>La division produit toujours un type de donnée <code class="docutils literal notranslate"><span class="pre">float</span></code>, même si le résultat est un nombre entier.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modulo (%)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Le reste de la division de x par y est:&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">%</span><span class="k">y</span>)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Le reste de la division de x par y est: 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>L’opérateur modulo <code class="docutils literal notranslate"><span class="pre">%</span></code> effectue d’abord une division, puis renvoie le reste de cette division. Par exemple, l’opération suivante :</p>
+<p>5 divisé par 2 donne 2 avec un reste de 1, donc 5 % 2 renvoie 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Division entière (//)</span>
+
+<span class="c1"># La division classique (/) renvoie une valeur flottante précise</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deux se divise dans neuf&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;fois&#39;</span><span class="p">)</span>
+
+<span class="c1"># La division entière (//) ne renvoie que la partie entière du quotient</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deux se divise entier dans neuf&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;fois&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Deux se divise dans neuf 4.5 fois
+Deux se divise entier dans neuf 4 fois
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exemple-pratique">
+<h3>Exemple pratique<a class="headerlink" href="#exemple-pratique" title="Lien vers cette rubrique">#</a></h3>
+<p>Supposons que nous travaillions dans une concession automobile et que nous voulions savoir combien de voitures vendre pour atteindre un bénéfice de 1000 000 DH. La division nous donnera une valeur en <code class="docutils literal notranslate"><span class="pre">float</span></code>, ce qui ne nous indique pas combien de voitures entières vendre pour atteindre cet objectif.</p>
+<p>Une idée serait d’utiliser la division entière pour connaître le nombre de voitures à vendre avant d’atteindre le seuil, puis d’en ajouter une de plus.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enregistrer les valeurs pertinentes</span>
+<span class="n">prix_moyen_vente</span> <span class="o">=</span> <span class="mi">548530</span>  <span class="c1"># Prix moyen de vente en DH  </span>
+<span class="n">cout_moyen_distribution</span> <span class="o">=</span> <span class="mi">457340</span>  <span class="c1"># Coût moyen de distribution en DH  </span>
+<span class="n">profit_par_voiture</span> <span class="o">=</span> <span class="n">prix_moyen_vente</span> <span class="o">-</span> <span class="n">cout_moyen_distribution</span>  <span class="c1"># Bénéfice par voiture  </span>
+<span class="n">objectif_profit</span> <span class="o">=</span> <span class="mi">1000000</span>  <span class="c1"># Objectif de profit en DH  </span>
+
+<span class="n">voitures_a_vendre</span> <span class="o">=</span> <span class="n">objectif_profit</span> <span class="o">/</span> <span class="n">profit_par_voiture</span>  <span class="c1"># Ceci est une valeur flottante  </span>
+<span class="n">voitures_a_vendre_entier</span> <span class="o">=</span> <span class="p">(</span><span class="n">objectif_profit</span> <span class="o">//</span> <span class="n">profit_par_voiture</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Nombre entier de voitures à vendre  </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">voitures_a_vendre</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="n">voitures_a_vendre_entier</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.96611470555982
+11
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="essayez-vous-meme">
+<h2>Essayez-vous-même !<a class="headerlink" href="#essayez-vous-meme" title="Lien vers cette rubrique">#</a></h2>
+<p>Complétez les exercices suivants pour mettre en pratique vos compétences.</p>
+<p>Pour adopter de bonnes habitudes, créez d’abord des variables pour résoudre les exercices, puis affichez ces variables avec la fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code>.</p>
+<section id="executez-le-code-dans-la-cellule-ci-dessous-pour-voir-les-erreurs-corrigez-les-erreurs-dans-le-code">
+<h3>1. Exécutez le code dans la cellule ci-dessous pour voir les erreurs. Corrigez les erreurs dans le code.<a class="headerlink" href="#executez-le-code-dans-la-cellule-ci-dessous-pour-voir-les-erreurs-corrigez-les-erreurs-dans-le-code" title="Lien vers cette rubrique">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ce n&#39;est pas ici qu&#39;il y a une erreur. Elle se trouve ailleurs.&quot;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Albert Einstein a dit : &quot;L’école HEC est la meilleure école du monde !&quot;&#39;</span><span class="p">)</span> <span class="c1"># En réalité, il n&#39;a probablement jamais dit cela.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ce n&#39;est pas ici qu&#39;il y a une erreur. Elle se trouve ailleurs.
+Albert Einstein a dit : &quot;L’école HEC est la meilleure école du monde !&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="executez-le-code-ci-dessous-pour-voir-l-erreur-corrigez-l-erreur-dans-le-code">
+<h3>2. Exécutez le code ci-dessous pour voir l’erreur. Corrigez l’erreur dans le code.<a class="headerlink" href="#executez-le-code-ci-dessous-pour-voir-l-erreur-corrigez-l-erreur-dans-le-code" title="Lien vers cette rubrique">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ceci produit&quot;, 1, &#39;</span><span class="n">erreur</span><span class="s1">&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ceci produit&quot;, 1, &#39;</span><span class="n">erreur</span><span class="s1">&#39;)</span>
+                                    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: unterminated string literal (detected at line 3)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pour-les-questions-restantes-utilisez-les-donnees-ci-dessous">
+<h3>Pour les questions restantes, utilisez les données ci-dessous :<a class="headerlink" href="#pour-les-questions-restantes-utilisez-les-donnees-ci-dessous" title="Lien vers cette rubrique">#</a></h3>
+<p>Imaginez que vous travaillez pour la société Renault Maroc et que vous avez les informations suivantes sur les ventes de voitures :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">voitures_vendues</span></code> représente le nombre de voitures vendues le mois dernier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prix_moyen_vente</span></code> est le prix de vente moyen par voiture</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cout_moyen_distribution</span></code> est le coût moyen de distribution par voiture</p></li>
+</ul>
+<p>Exécutez la cellule suivante pour créer et enregistrer ces données.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Données de &#39;Renault Maroc&#39; pour les exercices suivants</span>
+
+<span class="n">voitures_vendues</span> <span class="o">=</span> <span class="mi">35</span>  
+<span class="n">prix_moyen_vente</span> <span class="o">=</span> <span class="mi">548530</span>  
+<span class="n">cout_moyen_distribution</span> <span class="o">=</span> <span class="mi">457340</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="creez-une-variable-pour-calculer-le-benefice-moyen-par-voiture-a-laide-des-donnees-de-ventes-de-renault-maroc-affichez-le-resultat">
+<h4>3. Créez une variable pour calculer le bénéfice moyen par voiture à l’aide des données de ventes de <code class="docutils literal notranslate"><span class="pre">Renault</span> <span class="pre">Maroc</span></code>. Affichez le résultat.<a class="headerlink" href="#creez-une-variable-pour-calculer-le-benefice-moyen-par-voiture-a-laide-des-donnees-de-ventes-de-renault-maroc-affichez-le-resultat" title="Lien vers cette rubrique">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="trouvez-et-affichez-le-benefice-total-de-ce-mois-ci-en-vous-basant-sur-les-donnees-de-renault-maroc">
+<h4>4. Trouvez et affichez le bénéfice total de ce mois-ci en vous basant sur les données de <code class="docutils literal notranslate"><span class="pre">Renault</span> <span class="pre">Maroc</span></code>.<a class="headerlink" href="#trouvez-et-affichez-le-benefice-total-de-ce-mois-ci-en-vous-basant-sur-les-donnees-de-renault-maroc" title="Lien vers cette rubrique">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="en-supposant-que-les-ventes-et-les-marges-beneficiaires-de-ce-mois-soient-identiques-combien-de-mois-de-ventes-sont-necessaires-pour-atteindre-un-benefice-de-1-000-000-dh-ou-plus">
+<h4>5. En supposant que les ventes et les marges bénéficiaires de ce mois soient identiques, combien de mois de ventes sont nécessaires pour atteindre un bénéfice de 1 000 000 DH ou plus ?<a class="headerlink" href="#en-supposant-que-les-ventes-et-les-marges-beneficiaires-de-ce-mois-soient-identiques-combien-de-mois-de-ventes-sont-necessaires-pour-atteindre-un-benefice-de-1-000-000-dh-ou-plus" title="Lien vers cette rubrique">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pratique-1-types-de-donnees-mathematiques-et-fonction-print">Pratique 1 : Types de données, mathématiques et fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilisation-de-la-fonction-print">Utilisation de la fonction <code class="docutils literal notranslate"><span class="pre">print()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commentaires">Commentaires</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-de-donnees-de-base">Types de données de base</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cas-particulier-guillemets-a-l-interieur-des-chaines-de-caracteres">Cas particulier : guillemets à l’intérieur des chaînes de caractères</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operateurs-mathematiques">Opérateurs mathématiques</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-pratique">Exemple pratique</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#essayez-vous-meme">Essayez-vous-même !</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#executez-le-code-dans-la-cellule-ci-dessous-pour-voir-les-erreurs-corrigez-les-erreurs-dans-le-code">1. Exécutez le code dans la cellule ci-dessous pour voir les erreurs. Corrigez les erreurs dans le code.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#executez-le-code-ci-dessous-pour-voir-l-erreur-corrigez-l-erreur-dans-le-code">2. Exécutez le code ci-dessous pour voir l’erreur. Corrigez l’erreur dans le code.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pour-les-questions-restantes-utilisez-les-donnees-ci-dessous">Pour les questions restantes, utilisez les données ci-dessous :</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creez-une-variable-pour-calculer-le-benefice-moyen-par-voiture-a-laide-des-donnees-de-ventes-de-renault-maroc-affichez-le-resultat">3. Créez une variable pour calculer le bénéfice moyen par voiture à l’aide des données de ventes de <code class="docutils literal notranslate"><span class="pre">Renault</span> <span class="pre">Maroc</span></code>. Affichez le résultat.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trouvez-et-affichez-le-benefice-total-de-ce-mois-ci-en-vous-basant-sur-les-donnees-de-renault-maroc">4. Trouvez et affichez le bénéfice total de ce mois-ci en vous basant sur les données de <code class="docutils literal notranslate"><span class="pre">Renault</span> <span class="pre">Maroc</span></code>.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#en-supposant-que-les-ventes-et-les-marges-beneficiaires-de-ce-mois-soient-identiques-combien-de-mois-de-ventes-sont-necessaires-pour-atteindre-un-benefice-de-1-000-000-dh-ou-plus">5. En supposant que les ventes et les marges bénéficiaires de ce mois soient identiques, combien de mois de ventes sont nécessaires pour atteindre un bénéfice de 1 000 000 DH ou plus ?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Professeur Iaousse Mbarek, École des Hautes Études Commerciales, Rabat, Maroc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
