@@ -1,0 +1,945 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pratique 1 : Analyse avec pandas &#8212; Fondements de l&#39;Intelligence Artificielle</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=041d0952"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Pandas';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Fondements de l'Intelligence Artificielle - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Fondements de l'Intelligence Artificielle - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Fondements de l’IA
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ch0-intro.html">Chapitre 1 : Introduction à l’IA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch1-concpets.html">Chapitre 2 : Concepts Clés de l’IA</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Dépôt source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPandas.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Ouvrez un problème"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Pandas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pratique 1 : Analyse avec pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chargement-de-donnees-a-partir-de-fichiers-plats">Chargement de données à partir de fichiers plats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#essayez-vous-meme">Essayez vous-même !</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recuperer-des-donnees-depuis-internet">Récupérer des données depuis Internet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-de-vos-donnees">Exploration de vos données</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Essayez vous-même !</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-de-colonnes-et-de-lignes">Sélection de colonnes et de lignes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilisation-de-la-methode-loc">Utilisation de la méthode <code class="docutils literal notranslate"><span class="pre">.loc</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methode-iloc">Méthode <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Essayez vous-même !</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-pratique">Exercice pratique</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importez-la-bibliotheque-pandas-sous-le-nom-pd-et-utilisez-la-fonction-appropriee-pour-charger-notre-ensemble-de-donnees-lisez-cet-ensemble-de-donnees-dans-une-variable-appelee-bikes">1. Importez la bibliothèque pandas sous le nom <code class="docutils literal notranslate"><span class="pre">pd</span></code> et utilisez la fonction appropriée pour charger notre ensemble de données. Lisez cet ensemble de données dans une variable appelée <code class="docutils literal notranslate"><span class="pre">bikes</span></code>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#affichez-les-5-premieres-lignes-du-dataframe">2. Affichez les 5 premières lignes du dataframe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quelle-est-la-structure-des-donnees-nombre-de-lignes-colonnes-noms-etc">3. Quelle est la structure des données (nombre de lignes, colonnes, noms, etc.) ?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combien-de-traversees-de-ponts-sont-enregistrees-dans-notre-ensemble-de-donnees">4. Combien de traversées de ponts sont enregistrées dans notre ensemble de données ?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#completez-le-code-ci-dessous-pour-afficher-le-nombre-de-colonnes-et-leurs-noms">5. Complétez le code ci-dessous pour afficher le nombre de colonnes et leurs noms.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectionnez-les-5-premieres-lignes-en-utilisant-loc-et-iloc">6. Sélectionnez les 5 premières lignes en utilisant <code class="docutils literal notranslate"><span class="pre">loc</span></code> et <code class="docutils literal notranslate"><span class="pre">iloc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectionnez-les-5-premieres-lignes-des-colonnes-nommees-day-et-brooklyn-bridge-en-utilisant-loc-et-iloc">7. Sélectionnez les 5 premières lignes des colonnes nommées “Day” et “Brooklyn Bridge” en utilisant <code class="docutils literal notranslate"><span class="pre">.loc</span></code> et <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pratique-1-analyse-avec-pandas">
+<h1>Pratique 1 : Analyse avec pandas<a class="headerlink" href="#pratique-1-analyse-avec-pandas" title="Lien vers cette rubrique">#</a></h1>
+<p>Dans ce tutoriel pratique, nous allons apprendre à charger et explorer des ensembles de données à l’aide de la bibliothèque pandas.</p>
+<p>Dans ce module, nous supposons que <code class="docutils literal notranslate"><span class="pre">pandas</span></code> est déjà installé. Vous pouvez consulter le <a class="reference external" href="https://pandas.pydata.org/docs/getting_started/install.html">site officiel de pandas</a> pour les instructions d’installation, si nécessaire.</p>
+<section id="chargement-de-donnees-a-partir-de-fichiers-plats">
+<h2>Chargement de données à partir de fichiers plats<a class="headerlink" href="#chargement-de-donnees-a-partir-de-fichiers-plats" title="Lien vers cette rubrique">#</a></h2>
+<p>La première étape avant de pouvoir analyser nos données consiste à les charger. Il existe plusieurs formats de fichiers que nous pouvons importer dans Python, tels que les fichiers texte simples ou les fichiers Excel.</p>
+<p>Nous pouvons charger des ensembles de données sauvegardés soit sur notre ordinateur local, soit disponibles en ligne. Ce module abordera ces deux méthodes.</p>
+<p>Avant d’utiliser les fonctions et méthodes offertes par <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, nous devons d’abord l’importer. Voici la commande pour importer la bibliothèque pandas :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importer pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pour charger nos données, nous devons indiquer à notre script où se trouvent ces données. Cela se fait en fournissant à nos fonctions le chemin d’accès vers notre ensemble de données. Nous pouvons ensuite utiliser les fonctions de pandas pour lire les données et les stocker dans une variable.</p>
+<p>Voici deux commandes fréquemment utilisées pour lire des données avec pandas :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">cliquez ici</a> pour plus d’informations)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_excel()</span></code> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html">cliquez ici</a> pour plus d’informations)</p></li>
+</ul>
+<p>La fonction <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> permet de lire les fichiers au format <code class="docutils literal notranslate"><span class="pre">CSV</span></code> (où les données sont séparées par des virgules) ainsi que les fichiers texte.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importer des données à partir d&#39;un fichier .csv avec la fonction .read_csv  </span>
+<span class="n">cars_csv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./cars.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importer données à partir d&#39;un fichier .txt - .read_csv marche pour .txt aussi!</span>
+<span class="n">cars_txt_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./cars.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pandas utilise une bibliothèque externe appelée <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> pour lire les fichiers <code class="docutils literal notranslate"><span class="pre">Excel</span></code>. Cette bibliothèque a déjà été chargée dans cet environnement Jupyter Notebook.</p>
+<p>Pour installer <code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> sur votre propre machine, exécutez la commande suivante dans le terminal (assurez-vous d’avoir Python, Jupyter et PIP installés) :<br />
+<strong><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">openpyxl</span></code></strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importer des données à partir de fichiers Excel avec l&#39;extension .xlsx  </span>
+<span class="n">cars_xlsx_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;./cars.xlsx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Maintenant que nous avons chargé notre fichier Excel, examinons notre ensemble de données à l’aide de la commande ci-dessous.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cars_xlsx_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vous avez peut-être remarqué que les noms de colonnes semblent se trouver dans la première ligne au lieu de l’en-tête. Cela peut être facilement corrigé en utilisant le paramètre <code class="docutils literal notranslate"><span class="pre">header</span></code>, qui spécifie le nombre de lignes en haut du fichier à ignorer. Ce cas est fréquent, car les fichiers de données contiennent souvent quelques lignes de texte avant les lignes contenant les valeurs du tableau, et nous souhaitons que pandas ignore ces lignes.</p>
+<p>Ajoutez l’argument <code class="docutils literal notranslate"><span class="pre">header</span></code> et observez la différence :<br />
+<code class="docutils literal notranslate"><span class="pre">cars_xlsx_df</span> <span class="pre">=</span> <span class="pre">pd.read_excel(&quot;./cars.xlsx&quot;,</span> <span class="pre">header=1)</span></code></p>
+<hr style="border:2px solid gray"> </hr>
+<section id="essayez-vous-meme">
+<h3>Essayez vous-même !<a class="headerlink" href="#essayez-vous-meme" title="Lien vers cette rubrique">#</a></h3>
+<p><strong>Chargez le fichier <code class="docutils literal notranslate"><span class="pre">car_stock.csv</span></code> depuis votre répertoire de travail (données issues de <a class="reference external" href="https://www.iea.org/data-and-statistics/charts/global-electric-passenger-car-stock-2010-2020">IEA</a>) et stockez ces données dans une variable appelée “car_stock”. Affichez les premières lignes de votre DataFrame.</strong></p>
+<details>  
+  <summary><b><u>Besoin d'indication ? Cliquez ici</u></b></summary>  
+<p>Remplacez les underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>) par le nom de votre fichier de données !</p>
+<p>Consultez également le fichier CSV pour vérifier combien de lignes d’en-tête doivent être prises en compte.</p>
+</details>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">car_stock</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">_____</span><span class="p">,</span> <span class="n">header</span> <span class="o">=</span> <span class="n">____</span><span class="p">)</span>
+<span class="n">car_stock</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr style="border:2px solid gray"> </hr>
+</section>
+</section>
+<section id="recuperer-des-donnees-depuis-internet">
+<h2>Récupérer des données depuis Internet<a class="headerlink" href="#recuperer-des-donnees-depuis-internet" title="Lien vers cette rubrique">#</a></h2>
+<p>Maintenant que nous avons appris à lire des données stockées sur notre ordinateur local avec Python, voyons comment charger des données depuis Internet en utilisant pandas.</p>
+<p>Essayons de charger le même ensemble de données <a class="reference external" href="https://raw.githubusercontent.com/rashida048/Datasets/master/cars.csv">cars</a> dans Python, mais cette fois directement depuis le web. La source de cet ensemble de données est disponible <a class="reference external" href="https://github.com/rashida048/Datasets/blob/master/cars.csv">ici</a>.</p>
+<p>Nous pouvons charger cet ensemble de données directement depuis Internet en fournissant l’URL à la fonction <code class="docutils literal notranslate"><span class="pre">read_csv</span></code>. Notez que l’URL doit pointer vers les <strong>données brutes</strong> et non vers une page web générale !</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importer des données à partir d&#39;un fichier CSV en ligne  </span>
+<span class="n">cars_csv_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/rashida048/Datasets/master/cars.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Examinons les premières lignes de nos données avec la commande ci-dessous  </span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr style="border:2px solid gray"> </hr>
+</section>
+<section id="exploration-de-vos-donnees">
+<h2>Exploration de vos données<a class="headerlink" href="#exploration-de-vos-donnees" title="Lien vers cette rubrique">#</a></h2>
+<p>Maintenant que nous avons chargé nos données dans Python, explorons-les !</p>
+<p>Utilisez la commande <code class="docutils literal notranslate"><span class="pre">df.head()</span></code> ci-dessous pour afficher les 10 premières lignes de notre ensemble de données. Vous pouvez modifier le nombre de lignes affichées en remplaçant le chiffre 10 dans la commande par le nombre de lignes que vous souhaitez visualiser.</p>
+<p>Vous pouvez consulter la documentation de <code class="docutils literal notranslate"><span class="pre">df.head()</span></code> <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html">ici</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cars_csv_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Utilisez la commande ci-dessous pour afficher les 5 dernières lignes de notre ensemble de données. Avec <code class="docutils literal notranslate"><span class="pre">df.tail()</span></code>, vous pouvez modifier le nombre de lignes affichées en ajustant l’argument de la commande. Par exemple, si vous souhaitez voir 5 lignes, vous indiquez 5 en entrée.</p>
+<p>Vous pouvez consulter la documentation de <code class="docutils literal notranslate"><span class="pre">df.tail()</span></code> <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.tail.html">ici</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Afficher les 5 dernières lignes  </span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nous pouvons en apprendre davantage sur l’ensemble de données chargé dans Python en utilisant plusieurs méthodes, telles que :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">info()</span></code> : Cette méthode permet d’obtenir diverses informations sur notre ensemble de données, comme le nombre de lignes, le nombre de colonnes, les noms des colonnes, la taille de l’ensemble de données, et bien plus encore !</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> : Cette méthode nous donne uniquement le nombre de lignes et de colonnes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">columns</span></code> : Cette méthode nous fournit uniquement les noms des colonnes.</p></li>
+</ul>
+<p>Apprenons comment utiliser ces méthodes !</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nous pouvons utiliser la méthode info() pour obtenir une vue d&#39;ensemble complète des propriétés de notre ensemble de données.  </span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nous pouvons utiliser la méthode shape lorsque nous nous intéressons uniquement au nombre de lignes et de colonnes  </span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nous pouvons extraire uniquement le nombre de lignes de notre ensemble de données à partir de la méthode shape.  </span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nous pouvons extraire uniquement le nombre de colonnes de notre ensemble de données à partir de la méthode shape.  </span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nous pouvons utiliser la méthode columns pour obtenir les noms des colonnes de notre ensemble de données.  </span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr style="border:2px solid gray"> </hr>
+<section id="id1">
+<h3>Essayez vous-même !<a class="headerlink" href="#id1" title="Lien vers cette rubrique">#</a></h3>
+<p><strong>Quelle est le nombre de lignes et de colonnes du dataframe <code class="docutils literal notranslate"><span class="pre">car_stock</span></code> que nous avons créé précédemment ? Combien de lignes et de colonnes contient-il ?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ce dataframe contient … lignes et … colonnes.</p>
+<hr style="border:2px solid gray"> </hr>
+</section>
+</section>
+<section id="selection-de-colonnes-et-de-lignes">
+<h2>Sélection de colonnes et de lignes<a class="headerlink" href="#selection-de-colonnes-et-de-lignes" title="Lien vers cette rubrique">#</a></h2>
+<p>Nous pouvons extraire les données d’une ou plusieurs colonnes <strong>par leur nom</strong> dans notre ensemble de données.</p>
+<p>Exerçons-nous à extraire des données de colonnes spécifiques.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extraire les données d&#39;une seule colonne</span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">Model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Une autre méthode pour extraire les données d&#39;une colonne</span>
+<span class="n">cars_csv_df</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># La commande ci-dessous permet d&#39;extraire les données de plusieurs colonnes</span>
+<span class="n">cars_csv_df</span><span class="p">[[</span><span class="s1">&#39;Model&#39;</span><span class="p">,</span> <span class="s1">&#39;Size&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nous pouvons limiter l&#39;affichage aux 5 premières lignes en utilisant .head() comme nous l&#39;avons appris précédemment</span>
+<span class="n">cars_csv_df</span><span class="p">[[</span><span class="s1">&#39;Model&#39;</span><span class="p">,</span> <span class="s1">&#39;Size&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="utilisation-de-la-methode-loc">
+<h2>Utilisation de la méthode <code class="docutils literal notranslate"><span class="pre">.loc</span></code><a class="headerlink" href="#utilisation-de-la-methode-loc" title="Lien vers cette rubrique">#</a></h2>
+<p>Nous pouvons utiliser la méthode <code class="docutils literal notranslate"><span class="pre">.loc</span></code> pour sélectionner une colonne spécifique (ou même plusieurs) <strong>par leur nom</strong>. <code class="docutils literal notranslate"><span class="pre">loc</span></code> permet également de sélectionner des données sur les lignes qui nous intéressent en utilisant le « slicing ». Le « slicing » consiste à extraire certaines parties spécifiques de vos données.</p>
+<p>Pour plus d’informations, consultez la documentation Pandas sur <code class="docutils literal notranslate"><span class="pre">.loc</span></code> <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html">ici</a>, ainsi que la documentation générale sur l’indexation <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/indexing.html">ici</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sélectionner toutes les lignes d&#39;une seule colonne</span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sélectionner toutes les lignes de plusieurs colonnes</span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;Make&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nous pouvons également sélectionner des lignes provenant de colonnes spécifiques ou même de l’ensemble des colonnes en une seule fois.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sélectionner les indices de lignes 7 à 10 (lignes 8 à 11, car l&#39;indexation commence à 0) pour toutes les colonnes  </span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">10</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sélectionner les indices de lignes 15 à 18 pour les colonnes nommées &#39;YEAR&#39; et &#39;Make&#39;  </span>
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;Make&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="methode-iloc">
+<h2>Méthode <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#methode-iloc" title="Lien vers cette rubrique">#</a></h2>
+<p>La méthode <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> fonctionne de la même manière que <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, à la différence que nous utilisons <strong>les indices numériques correspondant aux colonnes au lieu de leurs noms</strong>. L’indice de la première colonne est 0, celui de la deuxième colonne est 1, et ainsi de suite.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.iloc</span></code> peut être utile lorsque nous devons utiliser une boucle <code class="docutils literal notranslate"><span class="pre">for</span></code>, car nous pouvons parcourir plusieurs lignes en utilisant les indices numériques.</p>
+<p>Pour plus d’informations sur cette méthode, consultez la <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.iloc.html">documentation</a> de Pandas sur <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Commande pour sélectionner une colonne entière  </span>
+<span class="c1"># L&#39;indice de &#39;YEAR&#39; est 0 car il s&#39;agit de la première colonne  </span>
+
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sélectionner toutes les lignes des colonnes correspondant aux indices de 0 à 6  </span>
+
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sélectionner les lignes correspondant aux indices 15 à 17 et les colonnes nommées &#39;YEAR&#39; et &#39;(kw)&#39;  </span>
+<span class="c1"># qui se trouvent aux indices 0 et 4  </span>
+
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr style="border:2px solid gray"> </hr>
+<section id="id2">
+<h3>Essayez vous-même !<a class="headerlink" href="#id2" title="Lien vers cette rubrique">#</a></h3>
+<p><strong>Décommentez le code correct pour afficher la consommation en ville et sur autoroute (unité kWh/100 km) dans vos données.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Décommentez le bon code</span>
+
+<span class="c1"># cars_csv_df.loc[:, [&#39;HWY (kWh/100 km)&#39;]]</span>
+
+<span class="c1"># cars_csv_df.loc[:, [&#39;COMB (Le/100 km)&#39;, &#39;(g/km)&#39;]]</span>
+
+<span class="n">cars_csv_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;CITY (kWh/100 km)&#39;</span><span class="p">,</span> <span class="s1">&#39;HWY (kWh/100 km)&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Écrivez le code ci-dessous pour utiliser la méthode appropriée pour sélectionner des lignes ou des colonnes. Sélectionnez toutes les lignes des colonnes nommées “Size” et “RATING”.</strong></p>
+<br>
+<details>
+  <summary><b><u>Besoin d'indication ? Cliquez ici</u></b></summary>
+  <p>
+          Quelle est la méthode appropriée (`loc` ou `iloc`) ? Remplacez les underscores `_ _ _` dans le code par la méthode correcte.
+  </p>
+</details>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cars_csv_df</span><span class="o">.</span><span class="n">____</span><span class="p">[:,[</span><span class="s1">&#39;Size&#39;</span><span class="p">,</span> <span class="s1">&#39;RATING&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Sélectionnez les colonnes “Make”, “Model” et “YEAR” par leurs noms, et sélectionnez les lignes 1 à 6.</strong></p>
+<hr style="border:2px solid gray"> </hr>
+</section>
+</section>
+<section id="exercice-pratique">
+<h2>Exercice pratique<a class="headerlink" href="#exercice-pratique" title="Lien vers cette rubrique">#</a></h2>
+<p>Travaillons avec un nouvel ensemble de données contenant des informations sur le nombre de vélos traversant l’East River à New York. Cet ensemble de données se trouve dans le fichier <code class="docutils literal notranslate"><span class="pre">nyc-east-river-bicycle-counts.csv</span></code>.</p>
+<p>Chargeons cet ensemble de données dans Python et utilisons-le pour répondre aux questions ci-dessous.</p>
+<section id="importez-la-bibliotheque-pandas-sous-le-nom-pd-et-utilisez-la-fonction-appropriee-pour-charger-notre-ensemble-de-donnees-lisez-cet-ensemble-de-donnees-dans-une-variable-appelee-bikes">
+<h3>1. Importez la bibliothèque pandas sous le nom <code class="docutils literal notranslate"><span class="pre">pd</span></code> et utilisez la fonction appropriée pour charger notre ensemble de données. Lisez cet ensemble de données dans une variable appelée <code class="docutils literal notranslate"><span class="pre">bikes</span></code>.<a class="headerlink" href="#importez-la-bibliotheque-pandas-sous-le-nom-pd-et-utilisez-la-fonction-appropriee-pour-charger-notre-ensemble-de-donnees-lisez-cet-ensemble-de-donnees-dans-une-variable-appelee-bikes" title="Lien vers cette rubrique">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># votre code ici</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="affichez-les-5-premieres-lignes-du-dataframe">
+<h3>2. Affichez les 5 premières lignes du dataframe<a class="headerlink" href="#affichez-les-5-premieres-lignes-du-dataframe" title="Lien vers cette rubrique">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># votre code ici</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="quelle-est-la-structure-des-donnees-nombre-de-lignes-colonnes-noms-etc">
+<h3>3. Quelle est la structure des données (nombre de lignes, colonnes, noms, etc.) ?<a class="headerlink" href="#quelle-est-la-structure-des-donnees-nombre-de-lignes-colonnes-noms-etc" title="Lien vers cette rubrique">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># votre code ici</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Il y a … colonnes et … lignes d’observations. Les noms de colonnes incluent des informations telles que …</p>
+</section>
+<section id="combien-de-traversees-de-ponts-sont-enregistrees-dans-notre-ensemble-de-donnees">
+<h3>4. Combien de traversées de ponts sont enregistrées dans notre ensemble de données ?<a class="headerlink" href="#combien-de-traversees-de-ponts-sont-enregistrees-dans-notre-ensemble-de-donnees" title="Lien vers cette rubrique">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># votre code ici</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="completez-le-code-ci-dessous-pour-afficher-le-nombre-de-colonnes-et-leurs-noms">
+<h3>5. Complétez le code ci-dessous pour afficher le nombre de colonnes et leurs noms.<a class="headerlink" href="#completez-le-code-ci-dessous-pour-afficher-le-nombre-de-colonnes-et-leurs-noms" title="Lien vers cette rubrique">#</a></h3>
+<p>Par exemple, votre sortie devrait ressembler à ceci :<br />
+<code class="docutils literal notranslate"><span class="pre">Le</span> <span class="pre">nombre</span> <span class="pre">de</span> <span class="pre">colonnes</span> <span class="pre">dans</span> <span class="pre">mes</span> <span class="pre">données</span> <span class="pre">est</span> <span class="pre">:</span> <span class="pre">3</span>&#160;&#160; <span class="pre">La</span> <span class="pre">liste</span> <span class="pre">des</span> <span class="pre">colonnes</span> <span class="pre">dans</span> <span class="pre">mes</span> <span class="pre">données</span> <span class="pre">est</span> <span class="pre">:</span> <span class="pre">['Date',</span> <span class="pre">'Day',</span> <span class="pre">'Bridge',</span> <span class="pre">...]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># votre code ici</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selectionnez-les-5-premieres-lignes-en-utilisant-loc-et-iloc">
+<h3>6. Sélectionnez les 5 premières lignes en utilisant <code class="docutils literal notranslate"><span class="pre">loc</span></code> et <code class="docutils literal notranslate"><span class="pre">iloc</span></code><a class="headerlink" href="#selectionnez-les-5-premieres-lignes-en-utilisant-loc-et-iloc" title="Lien vers cette rubrique">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># votre code ici</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selectionnez-les-5-premieres-lignes-des-colonnes-nommees-day-et-brooklyn-bridge-en-utilisant-loc-et-iloc">
+<h3>7. Sélectionnez les 5 premières lignes des colonnes nommées “Day” et “Brooklyn Bridge” en utilisant <code class="docutils literal notranslate"><span class="pre">.loc</span></code> et <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#selectionnez-les-5-premieres-lignes-des-colonnes-nommees-day-et-brooklyn-bridge-en-utilisant-loc-et-iloc" title="Lien vers cette rubrique">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># votre code ici</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chargement-de-donnees-a-partir-de-fichiers-plats">Chargement de données à partir de fichiers plats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#essayez-vous-meme">Essayez vous-même !</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recuperer-des-donnees-depuis-internet">Récupérer des données depuis Internet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploration-de-vos-donnees">Exploration de vos données</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Essayez vous-même !</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-de-colonnes-et-de-lignes">Sélection de colonnes et de lignes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilisation-de-la-methode-loc">Utilisation de la méthode <code class="docutils literal notranslate"><span class="pre">.loc</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methode-iloc">Méthode <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Essayez vous-même !</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercice-pratique">Exercice pratique</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importez-la-bibliotheque-pandas-sous-le-nom-pd-et-utilisez-la-fonction-appropriee-pour-charger-notre-ensemble-de-donnees-lisez-cet-ensemble-de-donnees-dans-une-variable-appelee-bikes">1. Importez la bibliothèque pandas sous le nom <code class="docutils literal notranslate"><span class="pre">pd</span></code> et utilisez la fonction appropriée pour charger notre ensemble de données. Lisez cet ensemble de données dans une variable appelée <code class="docutils literal notranslate"><span class="pre">bikes</span></code>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#affichez-les-5-premieres-lignes-du-dataframe">2. Affichez les 5 premières lignes du dataframe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quelle-est-la-structure-des-donnees-nombre-de-lignes-colonnes-noms-etc">3. Quelle est la structure des données (nombre de lignes, colonnes, noms, etc.) ?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combien-de-traversees-de-ponts-sont-enregistrees-dans-notre-ensemble-de-donnees">4. Combien de traversées de ponts sont enregistrées dans notre ensemble de données ?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#completez-le-code-ci-dessous-pour-afficher-le-nombre-de-colonnes-et-leurs-noms">5. Complétez le code ci-dessous pour afficher le nombre de colonnes et leurs noms.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectionnez-les-5-premieres-lignes-en-utilisant-loc-et-iloc">6. Sélectionnez les 5 premières lignes en utilisant <code class="docutils literal notranslate"><span class="pre">loc</span></code> et <code class="docutils literal notranslate"><span class="pre">iloc</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selectionnez-les-5-premieres-lignes-des-colonnes-nommees-day-et-brooklyn-bridge-en-utilisant-loc-et-iloc">7. Sélectionnez les 5 premières lignes des colonnes nommées “Day” et “Brooklyn Bridge” en utilisant <code class="docutils literal notranslate"><span class="pre">.loc</span></code> et <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Professeur Iaousse Mbarek, École des Hautes Études Commerciales, Rabat, Maroc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
