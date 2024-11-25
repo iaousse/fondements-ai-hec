@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+
+
+<html lang="fr" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Agents d’Intelligence Artificielle &#8212; Fondements de l&#39;Intelligence Artificielle</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=72dce1d2"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/translations.js?v=041d0952"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ch3-agents-ai';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Chapitre 3 : Technologies Émergentes et Applications" href="ch2-technologies-ai.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="fr"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Passer au contenu principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Haut de page</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Fondements de l'Intelligence Artificielle - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Fondements de l'Intelligence Artificielle - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Recherche</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Fondements de l’IA
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ch0-intro.html">Chapitre 1 : Introduction à l’IA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch1-concpets.html">Chapitre 2 : Concepts Clés de l’IA</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ch2-technologies-ai.html">Chapitre 3 : Technologies Émergentes et Applications</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Agents d’Intelligence Artificielle</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Dépôt source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fch3-agents-ai.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Ouvrez un problème"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Téléchargez cette page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ch3-agents-ai.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Télécharger le fichier source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimer au format PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Mode plein écran"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="clair/sombre" aria-label="clair/sombre" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Recherche" aria-label="Recherche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Agents d’Intelligence Artificielle</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenu </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-des-agents-dia"><strong>1. Définition des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fonctionnement-des-agents-dia"><strong>2. Fonctionnement des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristiques-des-agents-dia"><strong>3. Caractéristiques des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-des-caracteristiques-des-agents-dia"><strong>4. Applications des Caractéristiques des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-systemes-multi-agents"><strong>5. Les Systèmes Multi-Agents</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples-dapplications-dans-les-entreprises"><strong>6. Exemples d’Applications dans les Entreprises</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enjeux-et-perspectives-des-agents-dia"><strong>7. Enjeux et Perspectives des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apprentissage-et-adaptabilite-des-agents-dintelligence-artificielle">Apprentissage et Adaptabilité des Agents d’Intelligence Artificielle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacite-a-raisonner">Capacité à Raisonner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacite-a-agir">Capacité à Agir</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacite-a-memoriser">Capacité à Mémoriser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-concret-gestion-des-jours-de-vacances">Exemple Concret : Gestion des Jours de Vacances</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotique-et-automatisation">Robotique et Automatisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-la-robotique-et-son-fonctionnement">Définir la Robotique et son Fonctionnement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-des-technologies-dintelligence-artificielle">Intégration des Technologies d’Intelligence Artificielle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robots-collaboratifs-cobots">Robots Collaboratifs (Cobots)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-de-la-robotique-dans-les-secteurs-industriels">Applications de la Robotique dans les Secteurs Industriels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatisation-des-processus-robotiques-rpa">Automatisation des Processus Robotiques (RPA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples-dapplications-du-rpa">Exemples d’applications du RPA :</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-sur-les-avancees-en-robotique-et-rpa">Conclusion sur les Avancées en Robotique et RPA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="agents-dintelligence-artificielle">
+<h1>Agents d’Intelligence Artificielle<a class="headerlink" href="#agents-dintelligence-artificielle" title="Lien vers cette rubrique">#</a></h1>
+<hr class="docutils" />
+<section id="definition-des-agents-dia">
+<h2><strong>1. Définition des Agents d’IA</strong><a class="headerlink" href="#definition-des-agents-dia" title="Lien vers cette rubrique">#</a></h2>
+<p>Un <strong>agent d’IA</strong> est un programme logiciel conçu pour :</p>
+<ul class="simple">
+<li><p>Interagir avec son environnement,</p></li>
+<li><p>Collecter et traiter des données,</p></li>
+<li><p>Effectuer des tâches de manière autonome pour atteindre des objectifs définis par des humains.</p></li>
+</ul>
+<p><strong>Capacités principales :</strong></p>
+<ul class="simple">
+<li><p><strong>Prise de décision</strong> : Résoudre des problèmes et prendre des décisions indépendamment.</p></li>
+<li><p><strong>Adaptabilité</strong> : S’adapter à de nouvelles informations ou situations sans intervention humaine constante.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="fonctionnement-des-agents-dia">
+<h2><strong>2. Fonctionnement des Agents d’IA</strong><a class="headerlink" href="#fonctionnement-des-agents-dia" title="Lien vers cette rubrique">#</a></h2>
+<p>Prenons l’exemple d’une <strong>voiture autonome</strong> :</p>
+<ol class="arabic simple">
+<li><p><strong>Perception</strong> : Les capteurs (caméras, radars) collectent des données sur l’environnement (véhicules, piétons, panneaux).</p></li>
+<li><p><strong>Compréhension</strong> : Les algorithmes analysent ces données pour identifier les objets, leurs vitesses et leurs mouvements.</p></li>
+<li><p><strong>Prise de décision</strong> : Utilisation d’une base de connaissances et de la logique pour déterminer les actions (accélérer, freiner, tourner).</p></li>
+<li><p><strong>Action</strong> : Les actionneurs exécutent les décisions (contrôle du volant, des freins, etc.).</p></li>
+<li><p><strong>Apprentissage</strong> : Amélioration continue grâce à l’analyse des expériences passées via l’apprentissage machine.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="caracteristiques-des-agents-dia">
+<h2><strong>3. Caractéristiques des Agents d’IA</strong><a class="headerlink" href="#caracteristiques-des-agents-dia" title="Lien vers cette rubrique">#</a></h2>
+<p>Les agents d’IA possèdent plusieurs caractéristiques essentielles :</p>
+<ul class="simple">
+<li><p><strong>Sociabilité</strong> : Capacité à communiquer et collaborer avec d’autres agents ou entités.</p></li>
+<li><p><strong>Autonomie</strong> : Capacité à fonctionner indépendamment et à prendre des décisions sans aide extérieure.</p></li>
+<li><p><strong>Réactivité</strong> : Capacité à réagir immédiatement aux changements de l’environnement.</p></li>
+<li><p><strong>Proactivité</strong> : Capacité à anticiper et à prendre des initiatives pour atteindre les objectifs fixés.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="applications-des-caracteristiques-des-agents-dia">
+<h2><strong>4. Applications des Caractéristiques des Agents d’IA</strong><a class="headerlink" href="#applications-des-caracteristiques-des-agents-dia" title="Lien vers cette rubrique">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Caractéristique</strong></p></th>
+<th class="head"><p><strong>Exemple d’application</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Sociabilité</strong></p></td>
+<td><p>Chatbots en santé : conseils médicaux, vérification des symptômes, prise de rendez-vous.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Autonomie</strong></p></td>
+<td><p>Voitures autonomes : navigation, décisions de conduite, fonctionnement indépendant.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Réactivité</strong></p></td>
+<td><p>Thermostats intelligents : ajustement des températures en temps réel.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Maintenance prédictive industrielle : analyse des données pour anticiper les pannes.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Proactivité</strong></p></td>
+<td><p>Systèmes de recommandation : anticipation des besoins utilisateurs (Netflix, Amazon).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="les-systemes-multi-agents">
+<h2><strong>5. Les Systèmes Multi-Agents</strong><a class="headerlink" href="#les-systemes-multi-agents" title="Lien vers cette rubrique">#</a></h2>
+<p>Un <strong>système multi-agent</strong> est constitué de plusieurs agents qui collaborent pour atteindre des objectifs individuels ou collectifs.</p>
+<p><strong>Fonctionnalités clés :</strong></p>
+<ul class="simple">
+<li><p>Résolution de problèmes distribuée.</p></li>
+<li><p>Prise de décision coopérative.</p></li>
+<li><p>Comportements émergents grâce aux interactions entre agents.</p></li>
+</ul>
+<p><strong>Exemples d’applications :</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Marchés en ligne</strong> : Agents négociateurs pour la fixation des prix et la gestion des transactions.</p></li>
+<li><p><strong>Coordination robotique</strong> : Collaboration entre robots pour des tâches complexes (logistique, missions de sauvetage).</p></li>
+<li><p><strong>Gestion du trafic</strong> : Agents des voitures autonomes collaborant pour optimiser la circulation et réduire les embouteillages.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="exemples-dapplications-dans-les-entreprises">
+<h2><strong>6. Exemples d’Applications dans les Entreprises</strong><a class="headerlink" href="#exemples-dapplications-dans-les-entreprises" title="Lien vers cette rubrique">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Google</strong> :</p>
+<ul class="simple">
+<li><p><strong>YouTube</strong> : Recommandation de contenu, modération, détection de contenu inapproprié.</p></li>
+<li><p><strong>Gmail</strong> : Fonctions « Smart Compose » et « Smart Reply », organisation des e-mails, filtrage des spams.</p></li>
+<li><p><strong>Google Maps</strong> : Navigation en temps réel, estimation des temps de trajet, propositions d’itinéraires alternatifs.</p></li>
+</ul>
+</li>
+<li><p><strong>Amazon</strong> :</p>
+<ul class="simple">
+<li><p><strong>Alexa</strong> : Reconnaissance vocale, commande des appareils domestiques intelligents.</p></li>
+<li><p><strong>Plateforme e-commerce</strong> : Recommandation de produits, optimisation des recherches, gestion des stocks.</p></li>
+<li><p><strong>AWS</strong> : Services d’IA pour les développeurs (modèles d’apprentissage machine, traitement du langage naturel).</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="enjeux-et-perspectives-des-agents-dia">
+<h2><strong>7. Enjeux et Perspectives des Agents d’IA</strong><a class="headerlink" href="#enjeux-et-perspectives-des-agents-dia" title="Lien vers cette rubrique">#</a></h2>
+<ul class="simple">
+<li><p><strong>Impact économique</strong> :</p>
+<ul>
+<li><p>Le marché mondial de l’IA devrait atteindre 1,8 trillion USD dans les 7 prochaines années avec un taux de croissance annuel composé de 36,6 %.</p></li>
+<li><p>Les agents d’IA en service client pourraient permettre des économies de 80 milliards USD en réduisant les coûts de main-d’œuvre.</p></li>
+</ul>
+</li>
+<li><p><strong>Rôle stratégique</strong> :</p>
+<ul>
+<li><p>Les agents d’IA ne sont plus de simples outils, mais des partenaires dans la prise de décisions stratégiques et l’engagement client.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="apprentissage-et-adaptabilite-des-agents-dintelligence-artificielle">
+<h2>Apprentissage et Adaptabilité des Agents d’Intelligence Artificielle<a class="headerlink" href="#apprentissage-et-adaptabilite-des-agents-dintelligence-artificielle" title="Lien vers cette rubrique">#</a></h2>
+<p>Les agents dotés d’intelligence artificielle se distinguent par leur capacité à apprendre et à s’adapter en continu, ce qui leur permet de résoudre des problèmes complexes et de s’ajuster à des contextes variés. Ces capacités reposent sur trois éléments principaux : la raison, l’action et la mémoire.</p>
+<section id="capacite-a-raisonner">
+<h3>Capacité à Raisonner<a class="headerlink" href="#capacite-a-raisonner" title="Lien vers cette rubrique">#</a></h3>
+<p>Le raisonnement constitue le cœur des agents d’intelligence artificielle. Ces agents sont capables de :</p>
+<ol class="arabic simple">
+<li><p><strong>Planifier des solutions</strong> :<br />
+Lorsqu’un problème complexe est présenté, l’agent décompose la tâche en étapes, identifie les ressources nécessaires et établit un plan d’action.</p></li>
+<li><p><strong>Réfléchir de manière itérative</strong> :<br />
+L’agent analyse chaque étape de son plan pour identifier d’éventuelles erreurs ou incohérences, ajustant le processus jusqu’à obtenir un résultat satisfaisant.</p></li>
+</ol>
+</section>
+<section id="capacite-a-agir">
+<h3>Capacité à Agir<a class="headerlink" href="#capacite-a-agir" title="Lien vers cette rubrique">#</a></h3>
+<p>Pour exécuter les tâches planifiées, les agents utilisent des outils externes. Ces outils, également appelés <strong>programmes auxiliaires</strong>, permettent de compléter les capacités des modèles linguistiques. Parmi ces outils, on peut citer :</p>
+<ul class="simple">
+<li><p><strong>Moteurs de recherche</strong> :<br />
+Accès aux bases de données ou aux informations en ligne.</p></li>
+<li><p><strong>Calculatrices</strong> :<br />
+Réalisation de calculs complexes.</p></li>
+<li><p><strong>Interfaces spécialisées</strong> :<br />
+Interaction avec des systèmes externes, tels que des plateformes de traduction ou des systèmes de gestion.</p></li>
+</ul>
+<p>Les agents déterminent automatiquement quand et comment utiliser ces outils pour optimiser leurs performances.</p>
+</section>
+<section id="capacite-a-memoriser">
+<h3>Capacité à Mémoriser<a class="headerlink" href="#capacite-a-memoriser" title="Lien vers cette rubrique">#</a></h3>
+<p>La mémoire des agents peut être envisagée sous deux aspects :</p>
+<ol class="arabic simple">
+<li><p><strong>Journalisation des processus internes</strong> :<br />
+Les agents conservent un historique des étapes suivies et des décisions prises. Ces journaux peuvent être réutilisés pour résoudre des problèmes similaires ou pour améliorer leur efficacité.</p></li>
+<li><p><strong>Personnalisation basée sur l’historique des interactions</strong> :<br />
+Les agents mémorisent les échanges avec les utilisateurs pour offrir des réponses plus adaptées et personnalisées.</p></li>
+</ol>
+</section>
+<section id="exemple-concret-gestion-des-jours-de-vacances">
+<h3>Exemple Concret : Gestion des Jours de Vacances<a class="headerlink" href="#exemple-concret-gestion-des-jours-de-vacances" title="Lien vers cette rubrique">#</a></h3>
+<p>Prenons l’exemple d’un agent qui aide un utilisateur à planifier ses vacances. Cet agent peut :</p>
+<ol class="arabic simple">
+<li><p>Consulter la base de données des jours de congé restants.</p></li>
+<li><p>Accéder aux prévisions météorologiques pour la destination choisie.</p></li>
+<li><p>Rechercher les recommandations de santé publique sur l’utilisation de crème solaire.</p></li>
+<li><p>Calculer la quantité de crème nécessaire en fonction des heures passées au soleil et des recommandations.</p></li>
+</ol>
+<p>Ce processus illustre l’interaction entre la mémoire (jours de congé), l’action (recherche météorologique et calculs) et le raisonnement (planification globale de la tâche).</p>
+<p>Les capacités d’apprentissage et d’adaptabilité des agents sont donc fondamentales pour répondre aux attentes croissantes en matière d’autonomie et de pertinence.</p>
+</section>
+</section>
+<section id="robotique-et-automatisation">
+<h2>Robotique et Automatisation<a class="headerlink" href="#robotique-et-automatisation" title="Lien vers cette rubrique">#</a></h2>
+<section id="definir-la-robotique-et-son-fonctionnement">
+<h3>Définir la Robotique et son Fonctionnement<a class="headerlink" href="#definir-la-robotique-et-son-fonctionnement" title="Lien vers cette rubrique">#</a></h3>
+<p>La robotique se concentre sur la conception, la construction, et le fonctionnement des robots, des machines capables d’accomplir des tâches soit de manière autonome, soit avec une intervention humaine minimale. Elle repose sur trois composants essentiels :</p>
+<ol class="arabic simple">
+<li><p><strong>Capteurs</strong> : Ces dispositifs permettent au robot de percevoir son environnement. Par exemple :</p>
+<ul class="simple">
+<li><p>Les caméras détectent les obstacles et aident à la navigation.</p></li>
+<li><p>Les capteurs de température surveillent les limites de sécurité opérationnelle.</p></li>
+</ul>
+</li>
+<li><p><strong>Actionneurs</strong> : Également appelés « muscles du robot », ils permettent le mouvement et l’interaction avec l’environnement :</p>
+<ul class="simple">
+<li><p>Les moteurs électriques actionnent les bras et roues robotiques.</p></li>
+<li><p>Les actionneurs hydrauliques ou pneumatiques contrôlent diverses parties mobiles.</p></li>
+</ul>
+</li>
+<li><p><strong>Contrôleurs</strong> : Ils agissent comme le « cerveau » du robot, exécutant des logiciels pour interpréter les données des capteurs et contrôler les actions.</p></li>
+</ol>
+</section>
+<section id="integration-des-technologies-dintelligence-artificielle">
+<h3>Intégration des Technologies d’Intelligence Artificielle<a class="headerlink" href="#integration-des-technologies-dintelligence-artificielle" title="Lien vers cette rubrique">#</a></h3>
+<p>Les robots exploitent des technologies avancées d’intelligence artificielle (IA), notamment l’apprentissage automatique et le traitement du langage naturel (NLP), pour automatiser diverses tâches. Voici quelques exemples :</p>
+<ol class="arabic simple">
+<li><p><strong>Robot aspirateur</strong> :</p>
+<ul class="simple">
+<li><p>Utilise des capteurs pour détecter la saleté et les obstacles.</p></li>
+<li><p>Le contrôleur cartographie l’espace et planifie le meilleur itinéraire de nettoyage.</p></li>
+<li><p>Les actionneurs ajustent les roues et brosses pour différentes surfaces.</p></li>
+</ul>
+</li>
+<li><p><strong>Tondeuse intelligente</strong> :</p>
+<ul class="simple">
+<li><p>Analyse la hauteur de l’herbe et la disposition du terrain.</p></li>
+<li><p>Optimise les trajets grâce à l’apprentissage automatique.</p></li>
+<li><p>Les actionneurs garantissent une coupe uniforme.</p></li>
+</ul>
+</li>
+<li><p><strong>Haut-parleur intelligent à commande vocale</strong> :</p>
+<ul class="simple">
+<li><p>Capture les commandes vocales via des microphones.</p></li>
+<li><p>Interprète les demandes grâce au NLP.</p></li>
+<li><p>Effectue des actions comme jouer de la musique ou contrôler des appareils domestiques.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="robots-collaboratifs-cobots">
+<h3>Robots Collaboratifs (Cobots)<a class="headerlink" href="#robots-collaboratifs-cobots" title="Lien vers cette rubrique">#</a></h3>
+<p>Les cobots, ou robots collaboratifs, sont conçus pour travailler aux côtés des humains. Dotés de capteurs avancés et d’IA, ils interagissent directement avec les opérateurs humains pour accomplir des tâches nécessitant une coordination :</p>
+<ul class="simple">
+<li><p><strong>Industrie automobile</strong> : Un cobot peut maintenir une pièce en place pendant qu’un autre effectue le soudage.</p></li>
+<li><p><strong>Logistique</strong> : Les cobots trient et déplacent efficacement des colis.</p></li>
+</ul>
+</section>
+<section id="applications-de-la-robotique-dans-les-secteurs-industriels">
+<h3>Applications de la Robotique dans les Secteurs Industriels<a class="headerlink" href="#applications-de-la-robotique-dans-les-secteurs-industriels" title="Lien vers cette rubrique">#</a></h3>
+<p>La robotique transforme plusieurs industries grâce à son potentiel d’automatisation :</p>
+<ol class="arabic simple">
+<li><p><strong>Santé</strong> :</p>
+<ul class="simple">
+<li><p>Les robots chirurgicaux offrent une précision accrue.</p></li>
+<li><p>Les robots de réhabilitation personnalisent les thérapies pour les patients.</p></li>
+</ul>
+</li>
+<li><p><strong>Agriculture</strong> :</p>
+<ul class="simple">
+<li><p>Plantation, récolte et surveillance des cultures.</p></li>
+<li><p>Optimisation de l’irrigation et application ciblée de fertilisants.</p></li>
+</ul>
+</li>
+<li><p><strong>Commerce de détail</strong> :</p>
+<ul class="simple">
+<li><p>Les robots gèrent l’inventaire et assistent les clients.</p></li>
+<li><p>Les kiosques de paiement automatisés réduisent les temps d’attente.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="automatisation-des-processus-robotiques-rpa">
+<h3>Automatisation des Processus Robotiques (RPA)<a class="headerlink" href="#automatisation-des-processus-robotiques-rpa" title="Lien vers cette rubrique">#</a></h3>
+<p>Le RPA (Robotic Process Automation) est une technologie logicielle qui simule des actions humaines pour interagir avec des systèmes numériques. Selon une enquête réalisée par PEGA Systems :</p>
+<ul class="simple">
+<li><p>63 % des décideurs considèrent le RPA comme un élément clé de la transformation numérique globale.</p></li>
+<li><p>Le RPA se concentre sur l’automatisation des tâches répétitives et basées sur des règles.</p></li>
+</ul>
+<section id="exemples-dapplications-du-rpa">
+<h4>Exemples d’applications du RPA :<a class="headerlink" href="#exemples-dapplications-du-rpa" title="Lien vers cette rubrique">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Finance et comptabilité</strong> :</p>
+<ul class="simple">
+<li><p>Automatisation du traitement des factures.</p></li>
+<li><p>Gestion de la paie et des rapports financiers.</p></li>
+</ul>
+</li>
+<li><p><strong>Ressources humaines</strong> :</p>
+<ul class="simple">
+<li><p>Intégration des employés via la collecte de documents et la création de profils.</p></li>
+<li><p>Gestion des demandes de congés et des entretiens de recrutement.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="conclusion-sur-les-avancees-en-robotique-et-rpa">
+<h3>Conclusion sur les Avancées en Robotique et RPA<a class="headerlink" href="#conclusion-sur-les-avancees-en-robotique-et-rpa" title="Lien vers cette rubrique">#</a></h3>
+<p>Les robots modernes combinent capteurs, actionneurs, et contrôleurs avec des technologies d’IA pour fonctionner de manière autonome. Les cobots renforcent la collaboration humain-robot, tandis que le RPA offre une solution efficace pour les processus répétitifs. Ensemble, ces avancées soutiennent l’innovation dans des secteurs allant de la santé à l’agriculture.</p>
+</section>
+</section>
+<section id="exercices">
+<h2>Exercices<a class="headerlink" href="#exercices" title="Lien vers cette rubrique">#</a></h2>
+<section id="question-1">
+<h3>Question 1<a class="headerlink" href="#question-1" title="Lien vers cette rubrique">#</a></h3>
+<p>L’équipe développe un robot pour assembler des produits sur une ligne de production. Pour améliorer la précision des mouvements du robot et s’assurer qu’il peut réaliser des tâches délicates et complexes, sur quelle combinaison de composants l’équipe devrait-elle se concentrer, et pourquoi ?</p>
+<ul class="simple">
+<li><p>Actionneurs robustes et systèmes de sécurité redondants</p></li>
+<li><p>Capteurs de force et de couple et modèles d’apprentissage automatique</p></li>
+<li><p>Codeurs haute résolution et algorithmes de contrôle avancés</p></li>
+<li><p>Systèmes de vision et traitement des données en temps réel</p></li>
+</ul>
+</section>
+<section id="question-2">
+<h3>Question 2<a class="headerlink" href="#question-2" title="Lien vers cette rubrique">#</a></h3>
+<p>Laquelle des affirmations suivantes décrit le mieux les agents IA ?</p>
+<ul class="simple">
+<li><p>Programmes logiciels qui interagissent avec leur environnement et accomplissent des tâches de manière autonome</p></li>
+<li><p>Assistants humains pour le support technique</p></li>
+<li><p>Bases de données pour stocker de grandes quantités de données</p></li>
+<li><p>Dispositifs matériels qui contrôlent des machines</p></li>
+</ul>
+</section>
+<section id="question-3">
+<h3>Question 3<a class="headerlink" href="#question-3" title="Lien vers cette rubrique">#</a></h3>
+<p>Quelle phase du fonctionnement des agents IA implique le traitement et l’interprétation des données recueillies ?</p>
+<ul class="simple">
+<li><p>Compréhension</p></li>
+<li><p>Action</p></li>
+<li><p>Perception</p></li>
+<li><p>Prise de décision</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ch2-technologies-ai.html"
+       title="page précédente">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">précédent</p>
+        <p class="prev-next-title">Chapitre 3 : Technologies Émergentes et Applications</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenu
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-des-agents-dia"><strong>1. Définition des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fonctionnement-des-agents-dia"><strong>2. Fonctionnement des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristiques-des-agents-dia"><strong>3. Caractéristiques des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-des-caracteristiques-des-agents-dia"><strong>4. Applications des Caractéristiques des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#les-systemes-multi-agents"><strong>5. Les Systèmes Multi-Agents</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples-dapplications-dans-les-entreprises"><strong>6. Exemples d’Applications dans les Entreprises</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enjeux-et-perspectives-des-agents-dia"><strong>7. Enjeux et Perspectives des Agents d’IA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apprentissage-et-adaptabilite-des-agents-dintelligence-artificielle">Apprentissage et Adaptabilité des Agents d’Intelligence Artificielle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacite-a-raisonner">Capacité à Raisonner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacite-a-agir">Capacité à Agir</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capacite-a-memoriser">Capacité à Mémoriser</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exemple-concret-gestion-des-jours-de-vacances">Exemple Concret : Gestion des Jours de Vacances</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robotique-et-automatisation">Robotique et Automatisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definir-la-robotique-et-son-fonctionnement">Définir la Robotique et son Fonctionnement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-des-technologies-dintelligence-artificielle">Intégration des Technologies d’Intelligence Artificielle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robots-collaboratifs-cobots">Robots Collaboratifs (Cobots)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-de-la-robotique-dans-les-secteurs-industriels">Applications de la Robotique dans les Secteurs Industriels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatisation-des-processus-robotiques-rpa">Automatisation des Processus Robotiques (RPA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exemples-dapplications-du-rpa">Exemples d’applications du RPA :</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-sur-les-avancees-en-robotique-et-rpa">Conclusion sur les Avancées en Robotique et RPA</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercices">Exercices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Par Professeur Iaousse Mbarek, École des Hautes Études Commerciales, Rabat, Maroc.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

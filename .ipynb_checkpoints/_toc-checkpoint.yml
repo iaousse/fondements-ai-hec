@@ -6,3 +6,6 @@ root: intro
 chapters:
 - file: ch0-intro
 - file: ch1-concpets
+- file: ch2-technologies-ai
+- file: ch3-agents-ai
+
