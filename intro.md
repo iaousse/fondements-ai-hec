@@ -1,5 +1,11 @@
 # Fondements de l'IA
 
+```{image} images/qr_code_ia_hec.png
+:alt: codeqr
+:class: bg-primary mb-1
+:width: 500px
+:align: center
+```
 ## Professeur : **IAOUSSE M'barek**
 
 | **Titre**                                     | **Institution**                                                                                                      | **Année**      |
